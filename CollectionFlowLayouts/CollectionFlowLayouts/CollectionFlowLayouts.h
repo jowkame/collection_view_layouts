@@ -2,7 +2,7 @@
 //  CollectionFlowLayouts.h
 //  CollectionFlowLayouts
 //
-//  Created by jowkame on 2/22/18.
+//  Created by sergey on 2/22/18.
 //  Copyright © 2018 rubygarage. All rights reserved.
 //
 

@@ -12,6 +12,7 @@
 		8CF08385203F0F6D00041B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF08383203F0F6D00041B3A /* Main.storyboard */; };
 		8CF08387203F0F6D00041B3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CF08386203F0F6D00041B3A /* Assets.xcassets */; };
 		8CF0838A203F0F6D00041B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF08388203F0F6D00041B3A /* LaunchScreen.storyboard */; };
+		8CF083AD203F107700041B3A /* CollectionFlowLayouts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF083AE203F107700041B3A /* CollectionFlowLayouts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8CF08386203F0F6D00041B3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CF08389203F0F6D00041B3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CF0838B203F0F6D00041B3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CF083AE203F107700041B3A /* CollectionFlowLayouts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollectionFlowLayouts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CF083AD203F107700041B3A /* CollectionFlowLayouts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				8CF0837E203F0F6C00041B3A /* CollectionDemoApp */,
 				8CF0837D203F0F6C00041B3A /* Products */,
+				8CF083AC203F107700041B3A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				8CF0838B203F0F6D00041B3A /* Info.plist */,
 			);
 			path = CollectionDemoApp;
+			sourceTree = "<group>";
+		};
+		8CF083AC203F107700041B3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CF083AE203F107700041B3A /* CollectionFlowLayouts.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
