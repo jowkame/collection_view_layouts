@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol ContentDynamicLayoutDelegate {
+public protocol ContentDynamicLayoutDelegate: class {
     func cellSize(indexPath: IndexPath) -> CGSize
 }
 
@@ -20,7 +20,7 @@ public enum DynamicContentAlign {
 public struct ItemsPadding {
     var horizontal: CGFloat = 0
     var vertical: CGFloat = 0
-    
+
     static var zero: ItemsPadding {
         return ItemsPadding()
     }
@@ -28,24 +28,19 @@ public struct ItemsPadding {
 
 public class ContentDynamicLayout: UICollectionViewFlowLayout {
     var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
-    
     public var contentAlign: DynamicContentAlign = .left
     public var contentPadding: ItemsPadding = .zero
     public var cellsPadding: ItemsPadding = .zero
-    public var delegate: ContentDynamicLayoutDelegate! = nil
+    public weak var delegate: ContentDynamicLayoutDelegate! = nil
     public var contentSize: CGSize = .zero
-    
-    // MARK: - override
-    
+
     override public func prepare() {
         super.prepare()
-        
+
         cachedLayoutAttributes.removeAll()
-        
         calculateCollectionViewCellsFrames()
     }
-    
-    
+
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         for attributes in cachedLayoutAttributes {
@@ -65,7 +60,7 @@ public class ContentDynamicLayout: UICollectionViewFlowLayout {
     func calculateCollectionViewCellsFrames() {
         // override method to calculate frames
     }
-    
+
     override public var collectionViewContentSize: CGSize {
         return contentSize
     }
