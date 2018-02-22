@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PinterestStyleFlowLayout: ContentDynamicLayout {
-    var columnsCount: Int = 2
+public class PinterestStyleFlowLayout: ContentDynamicLayout {
+    public var columnsCount: Int = 2
     
     private var previousCellsYOffset = [CGFloat]()
     

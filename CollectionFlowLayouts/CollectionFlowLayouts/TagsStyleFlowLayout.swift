@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TagsStyleFlowLayout: ContentDynamicLayout {
+public class TagsStyleFlowLayout: ContentDynamicLayout {
     override func calculateCollectionViewCellsFrames() {
         contentSize.width = collectionView?.frame.size.width ?? 0
         
