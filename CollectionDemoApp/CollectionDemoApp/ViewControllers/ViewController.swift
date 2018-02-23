@@ -82,6 +82,7 @@ class ViewController: UIViewController, ContentDynamicLayoutDelegate {
         contentFlowLayout?.cellsPadding = ItemsPadding(horizontal: 8, vertical: 8)
         
         collectionView.collectionViewLayout = contentFlowLayout!
+        collectionView.setContentOffset(CGPoint.zero, animated: false)
         
         cellsSizes = CellSizeProvider.provideSizes(items: dataItems, flowType: type)
         
