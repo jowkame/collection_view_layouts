@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C3AB8AC204049CA0025CFC6 /* PickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8AB204049CA0025CFC6 /* PickerDataSource.swift */; };
+		8C3AB8AE20404B360025CFC6 /* PickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8AD20404B360025CFC6 /* PickerDelegate.swift */; };
+		8C3AB8B22040504B0025CFC6 /* ContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8B12040504B0025CFC6 /* ContentDataSource.swift */; };
+		8C3AB8B420405A650025CFC6 /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8B320405A650025CFC6 /* ContentProvider.swift */; };
+		8C3AB8B620405AD40025CFC6 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8B520405AD40025CFC6 /* ContentCell.swift */; };
+		8C3AB8B920405B0B0025CFC6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8B820405B0B0025CFC6 /* Color.swift */; };
+		8C3AB8BB20405D680025CFC6 /* CellSizeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8BA20405D680025CFC6 /* CellSizeProvider.swift */; };
+		8C3AB8BD20405EA40025CFC6 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AB8BC20405EA40025CFC6 /* Font.swift */; };
 		8CF08380203F0F6C00041B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0837F203F0F6C00041B3A /* AppDelegate.swift */; };
 		8CF08382203F0F6D00041B3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF08381203F0F6D00041B3A /* ViewController.swift */; };
 		8CF08385203F0F6D00041B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF08383203F0F6D00041B3A /* Main.storyboard */; };
@@ -16,6 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C3AB8AB204049CA0025CFC6 /* PickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataSource.swift; sourceTree = "<group>"; };
+		8C3AB8AD20404B360025CFC6 /* PickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegate.swift; sourceTree = "<group>"; };
+		8C3AB8B12040504B0025CFC6 /* ContentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDataSource.swift; sourceTree = "<group>"; };
+		8C3AB8B320405A650025CFC6 /* ContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
+		8C3AB8B520405AD40025CFC6 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
+		8C3AB8B820405B0B0025CFC6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8C3AB8BA20405D680025CFC6 /* CellSizeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeProvider.swift; sourceTree = "<group>"; };
+		8C3AB8BC20405EA40025CFC6 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8CF0837C203F0F6C00041B3A /* CollectionDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF0837F203F0F6C00041B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CF08381203F0F6D00041B3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +54,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C3AB8A92040499B0025CFC6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				8CF0837F203F0F6C00041B3A /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		8C3AB8AA204049A90025CFC6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C3AB8B02040502A0025CFC6 /* CollectionView */,
+				8C3AB8AF20404BA10025CFC6 /* DataPicker */,
+				8CF08381203F0F6D00041B3A /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8C3AB8AF20404BA10025CFC6 /* DataPicker */ = {
+			isa = PBXGroup;
+			children = (
+				8C3AB8AB204049CA0025CFC6 /* PickerDataSource.swift */,
+				8C3AB8AD20404B360025CFC6 /* PickerDelegate.swift */,
+			);
+			path = DataPicker;
+			sourceTree = "<group>";
+		};
+		8C3AB8B02040502A0025CFC6 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8C3AB8B12040504B0025CFC6 /* ContentDataSource.swift */,
+				8C3AB8B320405A650025CFC6 /* ContentProvider.swift */,
+				8C3AB8B520405AD40025CFC6 /* ContentCell.swift */,
+				8C3AB8BA20405D680025CFC6 /* CellSizeProvider.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		8C3AB8B720405AFF0025CFC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C3AB8B820405B0B0025CFC6 /* Color.swift */,
+				8C3AB8BC20405EA40025CFC6 /* Font.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8CF08373203F0F6C00041B3A = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +121,9 @@
 		8CF0837E203F0F6C00041B3A /* CollectionDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				8CF0837F203F0F6C00041B3A /* AppDelegate.swift */,
-				8CF08381203F0F6D00041B3A /* ViewController.swift */,
+				8C3AB8A92040499B0025CFC6 /* AppDelegate */,
+				8C3AB8B720405AFF0025CFC6 /* Extensions */,
+				8C3AB8AA204049A90025CFC6 /* ViewControllers */,
 				8CF08383203F0F6D00041B3A /* Main.storyboard */,
 				8CF08386203F0F6D00041B3A /* Assets.xcassets */,
 				8CF08388203F0F6D00041B3A /* LaunchScreen.storyboard */,
@@ -165,6 +229,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3AB8B420405A650025CFC6 /* ContentProvider.swift in Sources */,
+				8C3AB8B620405AD40025CFC6 /* ContentCell.swift in Sources */,
+				8C3AB8BD20405EA40025CFC6 /* Font.swift in Sources */,
+				8C3AB8B22040504B0025CFC6 /* ContentDataSource.swift in Sources */,
+				8C3AB8BB20405D680025CFC6 /* CellSizeProvider.swift in Sources */,
+				8C3AB8AE20404B360025CFC6 /* PickerDelegate.swift in Sources */,
+				8C3AB8AC204049CA0025CFC6 /* PickerDataSource.swift in Sources */,
+				8C3AB8B920405B0B0025CFC6 /* Color.swift in Sources */,
 				8CF08382203F0F6D00041B3A /* ViewController.swift in Sources */,
 				8CF08380203F0F6C00041B3A /* AppDelegate.swift in Sources */,
 			);

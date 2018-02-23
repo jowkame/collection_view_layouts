@@ -18,9 +18,14 @@ public enum DynamicContentAlign {
 }
 
 public struct ItemsPadding {
-    var horizontal: CGFloat = 0
-    var vertical: CGFloat = 0
-
+    public var horizontal: CGFloat = 0
+    public var vertical: CGFloat = 0
+    
+    public init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
+        self.horizontal = horizontal
+        self.vertical = vertical
+    }
+    
     static var zero: ItemsPadding {
         return ItemsPadding()
     }
