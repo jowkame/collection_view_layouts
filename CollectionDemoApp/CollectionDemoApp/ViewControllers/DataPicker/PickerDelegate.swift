@@ -9,8 +9,8 @@
 import UIKit
 
 class PickerDelegate: NSObject, UIPickerViewDelegate {
-    var items = [String]()
-    var rowSelectHandler: ((Int) -> Void)?
+    public var items = [String]()
+    public var rowSelectHandler: ((Int) -> Void)?
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return items[row]

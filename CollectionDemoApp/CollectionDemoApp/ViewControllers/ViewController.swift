@@ -20,14 +20,11 @@ class ViewController: UIViewController, ContentDynamicLayoutDelegate {
     
     private weak var pickerViewDelegate: PickerDelegate?
     private var pickerViewDataSource: PickerDataSource?
-  
     private var contentFlowLayout: ContentDynamicLayout?
     private var contentDataSource: ContentDataSource?
-    
-    private var flowItemsTitles = ["Tags Layout", "Pinterest Layout"]
-    
     private var dataItems = [String]()
     private var cellsSizes = [CGSize]()
+    private var flowItemsTitles = ["Tags Layout", "Pinterest Layout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

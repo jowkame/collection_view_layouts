@@ -11,7 +11,7 @@ import UIKit
 class PickerDataSource: NSObject, UIPickerViewDataSource {
     private let kNumberOfComponents: Int = 1
     
-    var items = [String]()
+    public var items = [String]()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return kNumberOfComponents
