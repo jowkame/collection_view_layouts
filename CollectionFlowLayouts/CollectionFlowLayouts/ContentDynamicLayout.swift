@@ -18,8 +18,8 @@ public enum DynamicContentAlign {
 }
 
 public struct ItemsPadding {
-    public var horizontal: CGFloat = 0
-    public var vertical: CGFloat = 0
+    public let horizontal: CGFloat
+    public let vertical: CGFloat
     
     public init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
         self.horizontal = horizontal
@@ -37,7 +37,7 @@ public class ContentDynamicLayout: UICollectionViewFlowLayout {
     public var contentPadding: ItemsPadding = .zero
     public var cellsPadding: ItemsPadding = .zero
     public var contentSize: CGSize = .zero
-    public weak var delegate: ContentDynamicLayoutDelegate! = nil
+    public weak var delegate: ContentDynamicLayoutDelegate?
 
     override public func prepare() {
         super.prepare()
@@ -63,7 +63,7 @@ public class ContentDynamicLayout: UICollectionViewFlowLayout {
     }
 
     func calculateCollectionViewCellsFrames() {
-        // override method to calculate frames
+        fatalError("Method must be overriden")
     }
 
     override public var collectionViewContentSize: CGSize {

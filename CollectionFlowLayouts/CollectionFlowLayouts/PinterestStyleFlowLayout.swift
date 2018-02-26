@@ -32,9 +32,9 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
             attributes.frame.size.width = cellWidth
 
             let minOffsetInfo = minYOffsetFrom(array: previousCellsYOffset)
-            attributes.frame.origin.y = minOffsetInfo.0
+            attributes.frame.origin.y = minOffsetInfo.offset
 
-            currentColumnIndex = minOffsetInfo.1
+            currentColumnIndex = minOffsetInfo.index
 
             attributes.frame.origin.x = CGFloat(currentColumnIndex) * (cellWidth + cellsPadding.horizontal) + contentPadding.horizontal
 
@@ -46,7 +46,7 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
         contentSize.height = (previousCellsYOffset.max() ?? 0) + contentPadding.vertical - cellsPadding.vertical
     }
 
-    private func minYOffsetFrom(array: [CGFloat]) -> (CGFloat, Int) {
+    private func minYOffsetFrom(array: [CGFloat]) -> (offset: CGFloat, index: Int) {
         let minYOffset = array.min() ?? 0
         let minIndex = array.index(of: minYOffset) ?? 0
 
