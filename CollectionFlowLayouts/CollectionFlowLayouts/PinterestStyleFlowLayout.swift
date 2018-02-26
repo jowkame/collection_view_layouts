@@ -46,14 +46,14 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
         contentSize.height = (previousCellsYOffset.max() ?? 0) + contentPadding.vertical - cellsPadding.vertical
     }
 
-    func minYOffsetFrom(array: [CGFloat]) -> (CGFloat, Int) {
+    private func minYOffsetFrom(array: [CGFloat]) -> (CGFloat, Int) {
         let minYOffset = array.min() ?? 0
         let minIndex = array.index(of: minYOffset) ?? 0
 
         return (minYOffset, minIndex)
     }
 
-    func calculateCellWidth() -> CGFloat {
+    private func calculateCellWidth() -> CGFloat {
         let collectionViewWidth = collectionView?.frame.size.width ?? 0
         let innerCellsPading = CGFloat(columnsCount - 1) * cellsPadding.horizontal
         let contentWidth = collectionViewWidth - 2 * contentPadding.horizontal - innerCellsPading
