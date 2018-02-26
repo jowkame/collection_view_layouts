@@ -18,7 +18,7 @@ class ViewController: UIViewController, ContentDynamicLayoutDelegate {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pickerView: UIPickerView!
     
-    private weak var pickerViewDelegate: PickerDelegate?
+    private var pickerViewTitlesProvider: PickerDelegate?
     private var pickerViewDataSource: PickerDataSource?
     private var contentFlowLayout: ContentDynamicLayout?
     private var contentDataSource: ContentDataSource?
@@ -39,17 +39,17 @@ class ViewController: UIViewController, ContentDynamicLayoutDelegate {
     }
     
     private func setupDataPickerView() {
-        pickerViewDelegate = PickerDelegate()
+        pickerViewTitlesProvider = PickerDelegate()
         pickerViewDataSource = PickerDataSource()
         
-        pickerViewDelegate?.items = flowItemsTitles
-        pickerViewDelegate?.rowSelectHandler = { [weak self] (row) in
+        pickerViewTitlesProvider?.items = flowItemsTitles
+        pickerViewTitlesProvider?.rowSelectHandler = { [weak self] (row) in
             self?.showLayout(type: FLowLayoutType(rawValue: row)!)
         }
         
         pickerViewDataSource?.items = flowItemsTitles
         
-        pickerView.delegate = pickerViewDelegate
+        pickerView.delegate = pickerViewTitlesProvider
         pickerView.dataSource = pickerViewDataSource
         
         pickerView.reloadAllComponents()
