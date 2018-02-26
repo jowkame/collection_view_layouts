@@ -51,7 +51,7 @@ public class TagsStyleFlowLayout: ContentDynamicLayout {
                 leftMargin -= currentCellWidth + cellsPadding.horizontal
             }
 
-            cachedLayoutAttributes.append(attributes)
+            addCachedLayoutAttributes(attributes: attributes)
 
             contentSize.height = topMargin + currentCellHeight + contentPadding.vertical
         }

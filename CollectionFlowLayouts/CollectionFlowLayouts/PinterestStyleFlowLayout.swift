@@ -40,7 +40,7 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
 
             previousCellsYOffset[currentColumnIndex] = (cellSize?.height ?? 0) + previousCellsYOffset[currentColumnIndex] + cellsPadding.vertical
 
-            cachedLayoutAttributes.append(attributes)
+            addCachedLayoutAttributes(attributes: attributes)
         }
 
         contentSize.height = (previousCellsYOffset.max() ?? 0) + contentPadding.vertical - cellsPadding.vertical
