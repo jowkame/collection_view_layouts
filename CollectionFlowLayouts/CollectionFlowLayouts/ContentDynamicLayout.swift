@@ -32,12 +32,12 @@ public struct ItemsPadding {
 }
 
 public class ContentDynamicLayout: UICollectionViewFlowLayout {
-    var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
+    public var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
     public var contentAlign: DynamicContentAlign = .left
     public var contentPadding: ItemsPadding = .zero
     public var cellsPadding: ItemsPadding = .zero
-    public weak var delegate: ContentDynamicLayoutDelegate! = nil
     public var contentSize: CGSize = .zero
+    public weak var delegate: ContentDynamicLayoutDelegate! = nil
 
     override public func prepare() {
         super.prepare()

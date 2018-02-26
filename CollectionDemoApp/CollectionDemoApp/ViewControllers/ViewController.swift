@@ -15,10 +15,10 @@ enum FLowLayoutType: Int {
 }
 
 class ViewController: UIViewController, ContentDynamicLayoutDelegate {
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var pickerView: UIPickerView!
     
-    private var pickerViewDelegate: PickerDelegate?
+    private weak var pickerViewDelegate: PickerDelegate?
     private var pickerViewDataSource: PickerDataSource?
   
     private var contentFlowLayout: ContentDynamicLayout?

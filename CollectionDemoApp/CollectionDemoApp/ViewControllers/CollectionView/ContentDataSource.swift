@@ -11,7 +11,7 @@ import UIKit
 class ContentDataSource: NSObject, UICollectionViewDataSource {
     private let kContenCellIdentifier = "ContentCellIdentifier"
     
-    var items = [String]()
+    public var items = [String]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count

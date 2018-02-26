@@ -9,7 +9,7 @@
 import UIKit
 
 class ContentCell: UICollectionViewCell {
-    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet private weak var contentLabel: UILabel!
     
     func configureCell(item: String) {
         contentLabel.text = item
@@ -17,4 +17,3 @@ class ContentCell: UICollectionViewCell {
         backgroundColor = UIColor.random().withAlphaComponent(0.5)
     }
 }
-

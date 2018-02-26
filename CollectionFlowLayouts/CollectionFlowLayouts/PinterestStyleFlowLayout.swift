@@ -9,9 +9,9 @@
 import UIKit
 
 public class PinterestStyleFlowLayout: ContentDynamicLayout {
-    public var columnsCount: Int = 2
-
     private var previousCellsYOffset = [CGFloat]()
+
+    public var columnsCount: Int = 2
 
     override func calculateCollectionViewCellsFrames() {
         contentSize.width = collectionView?.frame.size.width ?? 0
