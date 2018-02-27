@@ -22,21 +22,20 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/jowkame/collection_flow_layout'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'jowkame' => 'jowkame@gmail.com' }
   s.source           = { :git => 'https://github.com/jowkame/collection_flow_layout.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'collection_flow_layout/Classes/**/*'
+  s.source_files = 'collection_flow_layout/Classes/'
   
-  # s.resource_bundles = {
-  #   'collection_flow_layout' => ['collection_flow_layout/Assets/*.png']
-  # }
+  s.subspec 'TagsLayout' do |tags_layout|
+    tags_layout.source_files = 'collection_flow_layout/Classes/TagsStyleFlowLayout/**/*'
+  end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'PinterestLayout' do |pinterest_layout|
+    pinterest_layout.source_files = 'collection_flow_layout/Classes/PinterestStyleFlowLayout/**/*'
+  end
+
 end

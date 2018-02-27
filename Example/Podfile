@@ -2,6 +2,9 @@ use_frameworks!
 
 target 'collection_flow_layout_Example' do
   pod 'collection_flow_layout', :path => '../'
+  pod 'collection_flow_layout/TagsLayout', :path => '../'
+  pod 'collection_flow_layout/PinterestLayout', :path => '../'
+
 
   target 'collection_flow_layout_Tests' do
     inherit! :search_paths
