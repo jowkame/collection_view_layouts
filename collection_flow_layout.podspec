@@ -28,14 +28,14 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'collection_flow_layout/Classes/'
+  s.source_files = 'collection_flow_layout/Classes/*.swift'
   
   s.subspec 'TagsLayout' do |tags_layout|
-    tags_layout.source_files = 'collection_flow_layout/Classes/TagsStyleFlowLayout/**/*'
+    tags_layout.source_files = 'collection_flow_layout/Classes/TagsStyleFlowLayout/*.swift'
   end
 
   s.subspec 'PinterestLayout' do |pinterest_layout|
-    pinterest_layout.source_files = 'collection_flow_layout/Classes/PinterestStyleFlowLayout/**/*'
+    pinterest_layout.source_files = 'collection_flow_layout/Classes/PinterestStyleFlowLayout/*.swift'
   end
 
 end
