@@ -83,9 +83,7 @@ class TagsFlowLayoutTest: QuickSpec {
                 expect(attr[7].frame.width).to(equal(111.4716796875))
                 expect(attr[7].frame.height).to(equal(35.287109375))
             }
-        }
-        
-        describe("Check tags flow inner items") {
+            
             it("tags flow layout cells frames with paddings") {
                 let contentPadding = ItemsPadding(horizontal: 10, vertical: 10)
                 let cellPadding = ItemsPadding(horizontal: 8, vertical: 8)
@@ -132,9 +130,7 @@ class TagsFlowLayoutTest: QuickSpec {
                 expect(attr[7].frame.width).to(equal(111.4716796875))
                 expect(attr[7].frame.height).to(equal(35.287109375))
             }
-        }
-        
-        describe("Check tags flow inner items") {
+
             it("tags flow layout cells frames with right align") {
                 let tagsFlowLayout = self.configureTagsFlowLayout(align: .right, items: items)
                 let attr = tagsFlowLayout.cachedLayoutAttributes
@@ -179,9 +175,7 @@ class TagsFlowLayoutTest: QuickSpec {
                 expect(attr[7].frame.width).to(equal(111.4716796875))
                 expect(attr[7].frame.height).to(equal(35.287109375))
             }
-        }
-        
-        describe("Check tags flow inner items") {
+
             it("tags flow layout cells frames with paddings and right align") {
                 let contentPadding = ItemsPadding(horizontal: 10, vertical: 10)
                 let cellPadding = ItemsPadding(horizontal: 8, vertical: 8)
