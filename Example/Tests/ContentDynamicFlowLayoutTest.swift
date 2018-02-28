@@ -1,4 +1,10 @@
-// https://github.com/Quick/Quick
+//
+//  ContentDynamicFlowLayoutTest.swift
+//  collection_flow_layout_Example
+//
+//  Created by sergey on 2/28/18.
+//  Copyright © 2018 CocoaPods. All rights reserved.
+//
 
 import Quick
 import Nimble

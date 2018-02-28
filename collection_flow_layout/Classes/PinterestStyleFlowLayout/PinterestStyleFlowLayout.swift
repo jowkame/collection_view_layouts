@@ -13,7 +13,7 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
 
     public var columnsCount: Int = 2
 
-    override func calculateCollectionViewCellsFrames() {
+    override public func calculateCollectionViewCellsFrames() {
         contentSize.width = collectionView?.frame.size.width ?? 0
 
         var currentColumnIndex: Int = 0

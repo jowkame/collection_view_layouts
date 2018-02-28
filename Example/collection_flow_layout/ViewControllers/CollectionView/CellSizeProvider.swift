@@ -13,7 +13,7 @@ class CellSizeProvider {
     private static let kMinCellSize: UInt32 = 50
     private static let kMaxCellSize: UInt32 = 100
     
-    class func provideSizes(items: [String], flowType: FLowLayoutType) -> [CGSize] {
+    class func provideSizes(items: [String], flowType: FlowLayoutType) -> [CGSize] {
         var cellSizes = [CGSize]()
         var size: CGSize = .zero
         

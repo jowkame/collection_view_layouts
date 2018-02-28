@@ -9,11 +9,6 @@
 import UIKit
 import collection_flow_layout
 
-enum FLowLayoutType: Int {
-    case tags
-    case pinterest
-}
-
 class ViewController: UIViewController, ContentDynamicLayoutDelegate {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var pickerView: UIPickerView!
@@ -44,7 +39,7 @@ class ViewController: UIViewController, ContentDynamicLayoutDelegate {
 
         pickerViewTitlesProvider?.items = flowItemsTitles
         pickerViewTitlesProvider?.rowSelectHandler = { [weak self] (row) in
-            self?.showLayout(type: FLowLayoutType(rawValue: row)!)
+            self?.showLayout(type: FlowLayoutType(rawValue: row)!)
         }
 
         pickerViewDataSource?.items = flowItemsTitles
@@ -67,7 +62,7 @@ class ViewController: UIViewController, ContentDynamicLayoutDelegate {
         showLayout(type: .tags)
     }
 
-    private func showLayout(type: FLowLayoutType) {
+    private func showLayout(type: FlowLayoutType) {
         if type == .tags {
             contentFlowLayout = TagsStyleFlowLayout()
         } else if type == .pinterest {
