@@ -8,9 +8,9 @@
 
 import Quick
 import Nimble
-import collection_flow_layout
+@testable import collection_flow_layout
 
-class TagsFlowLayoutTest: QuickSpec {
+class TagsStyleFlowLayoutSpec: QuickSpec {
     private let kScreenWidth: CGFloat = 414
     private let kScreenHeight: CGFloat = 736
     

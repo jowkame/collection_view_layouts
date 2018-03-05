@@ -21,7 +21,7 @@
 		8C3AABA720455EE5000E967B /* PickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9C20455EE5000E967B /* PickerDelegate.swift */; };
 		8C3AABA920455EE5000E967B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9F20455EE5000E967B /* Font.swift */; };
 		8C3AABAA20455EE5000E967B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AABA020455EE5000E967B /* Color.swift */; };
-		8CB197912046CFB7005D8021 /* TagsFlowLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1978F2046CF4F005D8021 /* TagsFlowLayoutTest.swift */; };
+		8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */; };
 		8CB197922046D370005D8021 /* ContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9620455EE5000E967B /* ContentDataSource.swift */; };
 		8CB197932046D383005D8021 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9820455EE5000E967B /* ContentCell.swift */; };
 		8CB197942046D394005D8021 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AABA020455EE5000E967B /* Color.swift */; };
@@ -31,7 +31,7 @@
 		8CB1979C2046EE9B005D8021 /* FlowLayoutTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */; };
 		8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */; };
 		8CB197A12047000E005D8021 /* PinterestFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1979F20470002005D8021 /* PinterestFlowDelegate.swift */; };
-		8CB197A420470058005D8021 /* PinterestFlowLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB197A22047003A005D8021 /* PinterestFlowLayoutTest.swift */; };
+		8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */; };
 		AB8DA153A878015AAD84C918 /* Pods_collection_flow_layout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F9665BE8BD302558DB0B03 /* Pods_collection_flow_layout_Example.framework */; };
 		E9200117C13CD96C7B36E056 /* Pods_collection_flow_layout_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389EF9839DBA24CDB9DBD070 /* Pods_collection_flow_layout_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -71,11 +71,11 @@
 		8C3AAB9C20455EE5000E967B /* PickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerDelegate.swift; sourceTree = "<group>"; };
 		8C3AAB9F20455EE5000E967B /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8C3AABA020455EE5000E967B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		8CB1978F2046CF4F005D8021 /* TagsFlowLayoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFlowLayoutTest.swift; sourceTree = "<group>"; };
+		8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
 		8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFlowDelegate.swift; sourceTree = "<group>"; };
 		8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutTypes.swift; sourceTree = "<group>"; };
 		8CB1979F20470002005D8021 /* PinterestFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestFlowDelegate.swift; sourceTree = "<group>"; };
-		8CB197A22047003A005D8021 /* PinterestFlowLayoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestFlowLayoutTest.swift; sourceTree = "<group>"; };
+		8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
 		AEDCB129F10BCC1EAC0881F2 /* Pods-collection_flow_layout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection_flow_layout_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-collection_flow_layout_Tests/Pods-collection_flow_layout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CDE196837C4DBF60F73175E7 /* collection_flow_layout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = collection_flow_layout.podspec; path = ../collection_flow_layout.podspec; sourceTree = "<group>"; };
 		D3F9665BE8BD302558DB0B03 /* Pods_collection_flow_layout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection_flow_layout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */,
-				8CB1978F2046CF4F005D8021 /* TagsFlowLayoutTest.swift */,
+				8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */,
 			);
 			name = TagsLayout;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				8CB1979F20470002005D8021 /* PinterestFlowDelegate.swift */,
-				8CB197A22047003A005D8021 /* PinterestFlowLayoutTest.swift */,
+				8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */,
 			);
 			name = PinterestLayout;
 			sourceTree = "<group>";
@@ -364,11 +364,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-collection_flow_layout_Tests/Pods-collection_flow_layout_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -488,13 +490,13 @@
 			files = (
 				8CB197922046D370005D8021 /* ContentDataSource.swift in Sources */,
 				8CB197A12047000E005D8021 /* PinterestFlowDelegate.swift in Sources */,
-				8CB197912046CFB7005D8021 /* TagsFlowLayoutTest.swift in Sources */,
+				8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */,
 				8CB197952046D397005D8021 /* Font.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* ContentDynamicFlowLayoutTest.swift in Sources */,
 				8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */,
 				8CB197992046EDB5005D8021 /* TagsFlowDelegate.swift in Sources */,
 				8CB197942046D394005D8021 /* Color.swift in Sources */,
-				8CB197A420470058005D8021 /* PinterestFlowLayoutTest.swift in Sources */,
+				8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */,
 				8CB197932046D383005D8021 /* ContentCell.swift in Sources */,
 				8CB1979A2046EE42005D8021 /* CellSizeProvider.swift in Sources */,
 			);
