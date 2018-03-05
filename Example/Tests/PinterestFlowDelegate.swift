@@ -9,10 +9,13 @@
 import collection_flow_layout
 
 class PinterestFlowDelegate: ContentDynamicLayoutDelegate {
+    private var items = [String]()
     private var cellSizes = [CGSize]()
-    
-    init() {
-        cellSizes = [CGSize(width: 52, height: 71), CGSize(width: 116, height: 137), CGSize(width: 70, height: 52), CGSize(width: 123, height: 81), CGSize(width: 116, height: 111), CGSize(width: 90, height: 76), CGSize(width: 57, height: 83), CGSize(width: 93, height: 121)]
+   
+    init(items: [String]) {
+        self.items = items
+        
+        cellSizes = CellSizeProvider.provideSizes(items: items, flowType: .pinterest)
     }
     
     func cellSize(indexPath: IndexPath) -> CGSize {
