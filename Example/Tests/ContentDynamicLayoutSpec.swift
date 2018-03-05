@@ -8,9 +8,9 @@
 
 import Quick
 import Nimble
-import collection_flow_layout
+@testable import collection_flow_layout
 
-class ContentDynamicFlowLayoutTest: QuickSpec {
+class ContentDynamicLayoutSpec: QuickSpec {
     override func spec() {
         describe("Check base flow layout") {
             let baseFlowLayout = ContentDynamicLayout()
