@@ -31,7 +31,7 @@ class CellSizeProvider {
     }
     
     private class func provideTagCellSize(item: String) -> CGSize {
-        var size = UIFont.systemFont(ofSize: 17).sizeOfString(string: item, constrainedToWidth: 100)
+        var size = UIFont.systemFont(ofSize: 17).sizeOfString(string: item, constrainedToWidth: Double(UIScreen.main.bounds.width))
         size.width += kTagsPadding
         size.height += kTagsPadding
         

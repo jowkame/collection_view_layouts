@@ -38,7 +38,100 @@ class TagsStyleFlowLayoutSpec: QuickSpec {
                 
                 expect(tagsFlowLayout.delegate).to(beNil())
             }
-        }       
+        }
+        
+        describe("Check tags flow inner items") {
+            it("tags flow layout cells frames") {
+                let tagsFlowLayout = self.configureTagsFlowLayout(items: items)
+                let attributes = tagsFlowLayout.cachedLayoutAttributes
+                
+                let firstCellAttr = attributes.first!
+                
+                expect(firstCellAttr.frame.width).notTo(equal(0))
+                expect(firstCellAttr.frame.height).notTo(equal(0))
+                
+                for attr in attributes {
+                    expect(attr.frame.size.height).to(equal(firstCellAttr.frame.height))
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(UIScreen.main.bounds.width))
+                }
+                
+                let yValues = attributes.map({$0.frame.origin.y})
+                let yOffsetsFrequency = self.valuesFrequency(values: yValues)
+                
+                for info in yOffsetsFrequency {
+                    expect(info.frequency).to(beGreaterThanOrEqualTo(1))
+                }
+                
+                let xValues = attributes.map({$0.frame.origin.x})
+                let xOffsetsFrequency = self.valuesFrequency(values: xValues)
+                
+                for info in xOffsetsFrequency {
+                    expect(info.frequency).to(beGreaterThanOrEqualTo(1))
+                }
+                
+                let maxFrequency = xOffsetsFrequency.map({$0.frequency}).max() ?? 0
+                let offsetWithMaxFrequency = xOffsetsFrequency.filter({return $0.frequency == maxFrequency}).first!
+                
+                expect(offsetWithMaxFrequency.offset).to(equal(0))
+            }
+        }
+        
+        describe("Check tags flow inner items") {
+            it("tags flow layout cells frames with custom settings") {
+                let kContentPadding: CGFloat = 10
+                let kCellPadding: CGFloat = 8
+                
+                let tagsFlowLayout = self.configureTagsFlowLayout(contentPadding: ItemsPadding(horizontal: kContentPadding, vertical: kContentPadding), cellsPadding: ItemsPadding(horizontal: kCellPadding, vertical: kCellPadding), align: .right, items: items)
+                let attributes = tagsFlowLayout.cachedLayoutAttributes
+                
+                let firstCellAttr = attributes.first!
+                
+                expect(firstCellAttr.frame.width).notTo(equal(0))
+                expect(firstCellAttr.frame.height).notTo(equal(0))
+                
+                for attr in attributes {
+                    expect(attr.frame.size.height).to(equal(firstCellAttr.frame.height))
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(UIScreen.main.bounds.width - 2 * kContentPadding))
+                }
+                
+                let yValues = attributes.map({$0.frame.origin.y})
+                let yOffsetsFrequency = self.valuesFrequency(values: yValues)
+                
+                for info in yOffsetsFrequency {
+                    expect(info.frequency).to(beGreaterThanOrEqualTo(1))
+                }
+                
+                let xValues = attributes.map({$0.frame.origin.x + $0.frame.width})
+                let trailingOffsetsFrequency = self.valuesFrequency(values: xValues)
+                
+                for info in trailingOffsetsFrequency {
+                    expect(info.frequency).to(beGreaterThanOrEqualTo(1))
+                }
+                
+                let maxFrequency = trailingOffsetsFrequency.map({$0.frequency}).max() ?? 0
+                let offsetWithMaxFrequency = trailingOffsetsFrequency.filter({return $0.frequency == maxFrequency}).first!
+                
+                expect(offsetWithMaxFrequency.offset).to(equal(UIScreen.main.bounds.width - CGFloat(kContentPadding)))
+               
+                var previousCellFrame: CGRect = .zero
+                
+                for attr in attributes {
+                    if previousCellFrame != .zero && previousCellFrame.origin.y == attr.frame.origin.y {
+                        expect(previousCellFrame.origin.x - (attr.frame.origin.x + attr.frame.size.width)).to(equal(kCellPadding))
+                    }
+                    previousCellFrame = attr.frame
+                }                
+            }
+        }
+    }
+    
+    private func valuesFrequency(values: [CGFloat]) -> [(offset: CGFloat, frequency: Int)] {
+        let countedSet = NSCountedSet(array: values)
+        let countedOffsetsData = countedSet.objectEnumerator().map { (object: Any) -> (offset: CGFloat, frequency: Int) in
+            return (offset: object as! CGFloat, frequency: countedSet.count(for: object))
+        }
+        
+        return countedOffsetsData
     }
     
     private func configureTagsFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), cellsPadding: ItemsPadding = ItemsPadding(), align: DynamicContentAlign = .left, items: [String]) -> TagsStyleFlowLayout {
