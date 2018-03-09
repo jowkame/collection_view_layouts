@@ -19,8 +19,8 @@ class PinterestStyleFlowLayoutSpec: QuickSpec {
         let itemsCount = Int(arc4random_uniform(kPinterestStyleFlowLayoutMaxItems) + kPinterestStyleFlowLayoutMinItems)
         let items = Faker.init().lorem.words(amount: itemsCount).components(separatedBy: .whitespaces)
         
-        describe("Check tags flow layout") {
-            it("tags flow layout fields validation") {
+        describe("Check pinterest flow layout") {
+            it("pinterest flow layout fields validation") {
                 let tagsFlowLayout = self.configurePinterestFlowLayout(items: items)
 
                 expect(tagsFlowLayout.contentAlign).to(beAKindOf(DynamicContentAlign.self))
@@ -39,9 +39,31 @@ class PinterestStyleFlowLayoutSpec: QuickSpec {
                 expect(tagsFlowLayout.delegate).to(beNil())
             }
         }
+        
+        describe("Check pinterest flow layout") {
+            it("pinterest flow layout fields validation") {
+                let tagsFlowLayout = self.configurePinterestFlowLayout(items: items)
+                let attributes = tagsFlowLayout.cachedLayoutAttributes
+                
+                var currentColumnCount: Int = 0
+
+                var previousOffsetsDict = Dictionary<Int, CGFloat>()
+                
+                for attr in attributes {
+                    expect(attr.frame.size.width).to(equal(UIScreen.main.bounds.width / CGFloat(tagsFlowLayout.columnsCount)))
+                    
+                    let columnIndex = attr.indexPath.row % tagsFlowLayout.columnsCount
+                    expect(columnIndex).to(equal(currentColumnCount))
+                    
+                    currentColumnCount = (currentColumnCount < tagsFlowLayout.columnsCount - 1) ? (currentColumnCount + 1) : 0
+                    
+                    previousOffsetsDict[columnIndex] = attr.frame.origin.y + attr.frame.size.height
+                }
+            }
+        }
     }
     
-    private func configurePinterestFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), cellsPadding: ItemsPadding = ItemsPadding(), items: [String]) -> PinterestStyleFlowLayout {
+    private func configurePinterestFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), cellsPadding: ItemsPadding = ItemsPadding(), columnsCount: Int = 2, items: [String]) -> PinterestStyleFlowLayout {
         let flowDelegate = PinterestFlowDelegate(items: items)
         let pinterestFlowLayout = PinterestStyleFlowLayout()
         pinterestFlowLayout.delegate = flowDelegate
