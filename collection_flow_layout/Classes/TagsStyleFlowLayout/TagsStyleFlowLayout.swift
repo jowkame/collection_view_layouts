@@ -10,26 +10,30 @@ import UIKit
 
 public class TagsStyleFlowLayout: ContentDynamicLayout {
     override public func calculateCollectionViewCellsFrames() {
-        contentSize.width = collectionView?.frame.size.width ?? 0
+        guard let contentCollectionView = collectionView, delegate != nil else {
+            return
+        }
+        
+        contentSize.width = contentCollectionView.frame.size.width
 
         let leftPadding = 0 + contentPadding.horizontal
-        let rightPadding = (collectionView?.frame.size.width ?? 0) - contentPadding.horizontal
+        let rightPadding = contentCollectionView.frame.size.width - contentPadding.horizontal
 
         var leftMargin: CGFloat = (contentAlign == .left) ? leftPadding : rightPadding
 
         var topMargin: CGFloat = contentPadding.vertical
 
-        for item in 0 ..< (collectionView?.numberOfItems(inSection: 0) ?? 0) {
+        for item in 0 ..< contentCollectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
 
-            attributes.frame.size = delegate?.cellSize(indexPath: indexPath) ?? .zero
+            attributes.frame.size = delegate!.cellSize(indexPath: indexPath)
 
             let currentCellWidth = attributes.frame.size.width
             let currentCellHeight = attributes.frame.size.height
 
             if contentAlign == .left {
-                if leftMargin + currentCellWidth + cellsPadding.vertical > collectionView?.frame.size.width ?? 0 {
+                if leftMargin + currentCellWidth + cellsPadding.vertical > contentCollectionView.frame.size.width {
                     leftMargin = contentPadding.horizontal
                     topMargin += attributes.frame.size.height + cellsPadding.vertical
                 }
@@ -41,7 +45,7 @@ public class TagsStyleFlowLayout: ContentDynamicLayout {
 
             } else if contentAlign == .right {
                 if leftMargin - currentCellWidth - cellsPadding.horizontal < 0 {
-                    leftMargin = (collectionView?.frame.size.width ?? 0) - contentPadding.horizontal
+                    leftMargin = contentCollectionView.frame.size.width - contentPadding.horizontal
                     topMargin += attributes.frame.size.height + cellsPadding.vertical
                 }
 

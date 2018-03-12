@@ -14,13 +14,17 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
     public var columnsCount: Int = 2
 
     override public func calculateCollectionViewCellsFrames() {
-        contentSize.width = collectionView?.frame.size.width ?? 0
+        guard let contentCollectionView = collectionView else {
+            return
+        }
+        
+        contentSize.width = contentCollectionView.frame.size.width
 
         var currentColumnIndex: Int = 0
 
         previousCellsYOffset = [CGFloat](repeating: contentPadding.vertical, count: columnsCount)
 
-        for item in 0 ..< (collectionView?.numberOfItems(inSection: 0) ?? 0) {
+        for item in 0 ..< (contentCollectionView.numberOfItems(inSection: 0)) {
             let cellWidth = calculateCellWidth()
 
             let indexPath = IndexPath(item: item, section: 0)
@@ -54,7 +58,11 @@ public class PinterestStyleFlowLayout: ContentDynamicLayout {
     }
 
     private func calculateCellWidth() -> CGFloat {
-        let collectionViewWidth = collectionView?.frame.size.width ?? 0
+        guard let contentCollectionView = collectionView else {
+            return 0
+        }
+        
+        let collectionViewWidth = contentCollectionView.frame.size.width
         let innerCellsPading = CGFloat(columnsCount - 1) * cellsPadding.horizontal
         let contentWidth = collectionViewWidth - 2 * contentPadding.horizontal - innerCellsPading
 

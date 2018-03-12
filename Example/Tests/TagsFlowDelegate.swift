@@ -8,9 +8,11 @@
 
 import collection_flow_layout
 
-class TagsFlowDelegate: ContentDynamicLayoutDelegate {
+class TagsFlowDelegateMock: ContentDynamicLayoutDelegate {
     private var items = [String]()
     private var cellSizes = [CGSize]()
+
+    public var isCellSizeWasCalled = false
     
     init(items: [String]) {
         self.items = items
@@ -19,6 +21,8 @@ class TagsFlowDelegate: ContentDynamicLayoutDelegate {
     }
     
     func cellSize(indexPath: IndexPath) -> CGSize {
+        isCellSizeWasCalled = true
+        
         return cellSizes[indexPath.row]
     }
 }
