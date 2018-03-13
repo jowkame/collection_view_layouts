@@ -49,7 +49,7 @@ class TagsStyleFlowLayoutSpec: QuickSpec {
             let tagsFlowLayout = self.configureTagsFlowLayout(items: items)
             let attributes = tagsFlowLayout.cachedLayoutAttributes
             
-            it("test cells equal height") {
+            it("should have cells with equal heights") {
                 let firstCellAttr = attributes.first!
                 
                 expect(firstCellAttr.frame.width).notTo(equal(0))
@@ -61,14 +61,14 @@ class TagsStyleFlowLayoutSpec: QuickSpec {
                 }
             }
             
-            it ("test base paddings") {
+            it ("should have base zero paddings") {
                 expect(tagsFlowLayout.cellsPadding.horizontal).to(equal(0))
                 expect(tagsFlowLayout.cellsPadding.vertical).to(equal(0))
                 expect(tagsFlowLayout.contentPadding.horizontal).to(equal(0))
                 expect(tagsFlowLayout.contentPadding.vertical).to(equal(0))
             }
 
-            it("test cells left align and items transfer") {
+            it("should have cells aligned to left side and transfer items to new line") {
                 expect(tagsFlowLayout.contentAlign).to(equal(DynamicContentAlign.left))
                 
                 var widthSum: CGFloat = 0
@@ -88,7 +88,7 @@ class TagsStyleFlowLayoutSpec: QuickSpec {
         }
         
         describe("Check tags flow inner items with custom settings") {
-            it("test cells right align and items transfer") {
+            it("should have cells aligned to right side and transfer items to new line") {
                 let tagsFlowLayout = self.configureTagsFlowLayout(align: .right, items: items)
                 let attributes = tagsFlowLayout.cachedLayoutAttributes
                 
@@ -109,7 +109,7 @@ class TagsStyleFlowLayoutSpec: QuickSpec {
                 }
             }
             
-            it("test layout content padding") {
+            it("should have content padding from configuration") {
                 let hPadding: CGFloat = 10
                 let vPadding: CGFloat = 10
                 
@@ -135,7 +135,7 @@ class TagsStyleFlowLayoutSpec: QuickSpec {
                 }
             }
             
-            it("test layout cells padding") {
+            it("should have cells padding from configuration") {
                 let hPadding: CGFloat = 10
                 let vPadding: CGFloat = 10
                 
