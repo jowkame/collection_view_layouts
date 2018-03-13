@@ -32,7 +32,7 @@ public struct ItemsPadding {
 }
 
 public class ContentDynamicLayout: UICollectionViewFlowLayout {
-    private var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
+    public private(set) var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
     
     public var contentAlign: DynamicContentAlign = .left
     public var contentPadding: ItemsPadding = .zero
@@ -63,7 +63,7 @@ public class ContentDynamicLayout: UICollectionViewFlowLayout {
         }
     }
 
-    func calculateCollectionViewCellsFrames() {
+    public func calculateCollectionViewCellsFrames() {
         fatalError("Method must be overriden")
     }
     

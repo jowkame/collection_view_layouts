@@ -11,5 +11,6 @@ target 'collection_flow_layout_Example' do
 
     pod 'Quick', '~> 1.2.0'
     pod 'Nimble', '~> 7.0.2'
+    pod 'Fakery', '~> 3.3'
   end
 end

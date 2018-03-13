@@ -13,7 +13,7 @@ class CellSizeProvider {
     private static let kMinCellSize: UInt32 = 50
     private static let kMaxCellSize: UInt32 = 100
     
-    class func provideSizes(items: [String], flowType: FLowLayoutType) -> [CGSize] {
+    class func provideSizes(items: [String], flowType: FlowLayoutType) -> [CGSize] {
         var cellSizes = [CGSize]()
         var size: CGSize = .zero
         
@@ -31,7 +31,7 @@ class CellSizeProvider {
     }
     
     private class func provideTagCellSize(item: String) -> CGSize {
-        var size = UIFont.systemFont(ofSize: 17).sizeOfString(string: item, constrainedToWidth: 100)
+        var size = UIFont.systemFont(ofSize: 17).sizeOfString(string: item, constrainedToWidth: Double(UIScreen.main.bounds.width))
         size.width += kTagsPadding
         size.height += kTagsPadding
         
