@@ -38,4 +38,8 @@ TODO: Add long description of the pod here.
     pinterest_layout.source_files = 'collection_flow_layout/Classes/PinterestStyleFlowLayout/*.swift'
   end
 
+  s.subspec 'Px500Layout' do |px500_layout|
+    px500_layout.source_files = 'collection_flow_layout/Classes/Px500StyleFlowLayout/*.swift'
+  end
+
 end
