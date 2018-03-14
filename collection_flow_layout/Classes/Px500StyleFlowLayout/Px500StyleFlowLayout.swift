@@ -41,16 +41,22 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
             let cellsInRow = dict[i]!
             
             var xOffset: CGFloat = 0
-            let currentCellWidth = contentCollectionView.frame.size.width / CGFloat(cellsInRow)
+            var cellsWidths = [CGFloat]()
             
             for _ in 0..<cellsInRow  {
                 let indexPath = IndexPath(item: index, section: 0)
-                
-                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 let contentSize = delegate!.cellSize(indexPath: indexPath)
                 
+                cellsWidths.append(contentSize.width)
+            }
+            
+            let cellWidthsPercents = convertCellWidthsToRelative(cellWidths: cellsWidths)
+            
+            for j in 0..<cellsInRow  {
+                let indexPath = IndexPath(item: index, section: 0)
+                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 
-                
+                let currentCellWidth = cellWidthsPercents[j]
                 attributes.frame = CGRect(x: xOffset, y: yOffset, width: currentCellWidth, height: cellHeight)
                 
                 addCachedLayoutAttributes(attributes: attributes)
@@ -58,9 +64,26 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
                 xOffset += currentCellWidth
             }
             
+            
             yOffset += cellHeight
         }
         
         contentSize.width = contentCollectionView.frame.size.width
+    }
+    
+    private func convertCellWidthsToRelative(cellWidths: [CGFloat]) -> [CGFloat] {
+        guard let contentCollectionView = collectionView, delegate != nil else {
+            return [CGFloat]()
+        }
+        
+        if cellWidths.count == 1 {
+            return [contentCollectionView.frame.size.width]
+        } else if cellWidths.count == 2 {
+            return [CGFloat](repeating: contentCollectionView.frame.size.width / 2, count: 2)
+        } else if cellWidths.count == 3 {
+            return [CGFloat](repeating: contentCollectionView.frame.size.width / 3, count: 3)
+        }
+        
+        return [CGFloat(0)]
     }
 }
