@@ -14,6 +14,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
     private let kCenterWidthMaxCoef: CGFloat = 0.4
     private let kNotCenterWidthMinCoef: CGFloat = 0.22
     private let kNotCenterWidthMaxCoef: CGFloat = 0.39
+    private let kFullPercents: CGFloat = 1
     
     public var visibleRowsCount: Int = 5
     
@@ -103,7 +104,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         
         let coefficient = firstCellSize.width / secondCellSize.width
         
-        if coefficient < 1 {
+        if coefficient < kFullPercents {
             let relativeFirst = halfContentWidth * coefficient
             let relativeSecond = contentCollectionView.frame.size.width - relativeFirst
             return [relativeFirst, relativeSecond]
