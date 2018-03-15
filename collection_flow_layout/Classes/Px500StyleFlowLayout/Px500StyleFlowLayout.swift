@@ -66,14 +66,14 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
                 
                 addCachedLayoutAttributes(attributes: attributes)
                 index += 1
-                xOffset += currentCellWidth
+                xOffset += (currentCellWidth + cellsPadding.horizontal)
             }
             
             yOffset += (cellHeight + cellsPadding.vertical)
         }
         
         contentSize.width = contentCollectionView.frame.size.width
-        contentSize.height = CGFloat(rowCount - 1) * (cellHeight + cellsPadding.vertical) + contentPadding.vertical
+        contentSize.height = CGFloat(rowCount - 1) * (cellHeight + cellsPadding.vertical) + contentPadding.vertical + cellsPadding.vertical
     }
     
     private func convertCellWidthsToRelative(cellsSizes: [CGSize]) -> [CGFloat] {
@@ -109,11 +109,11 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         if coefficient < kFullPercents {
             let relativeFirst = halfContentWidth * coefficient
             let relativeSecond = contentWidth - relativeFirst
-            return [relativeFirst, relativeSecond]
+            return [relativeFirst - cellsPadding.horizontal, relativeSecond]
         } else {
             let relativeFirst = halfContentWidth / coefficient
             let relativeSecond = contentWidth - relativeFirst
-            return [relativeSecond, relativeFirst]
+            return [relativeSecond - cellsPadding.horizontal, relativeFirst]
         }
     }
     
@@ -138,24 +138,25 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         
         if isFirstPortrait == true {
             relativeFirstWidth = CGFloat(contentWidth * kNotCenterWidthMinCoef)
-            relativeSecondWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
-            relativeThirdWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
+            relativeSecondWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef - cellsPadding.horizontal)
+            relativeThirdWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef - cellsPadding.horizontal)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else if isSecondPortrait == true {
-            relativeFirstWidth = CGFloat(contentWidth * kCenterWidthMaxCoef)
+            relativeFirstWidth = CGFloat(contentWidth * kCenterWidthMaxCoef - cellsPadding.horizontal)
             relativeSecondWidth = CGFloat(contentWidth * kCenterWidthMinCoef)
-            relativeThirdWidth = CGFloat(contentWidth * kCenterWidthMaxCoef)
+            relativeThirdWidth = CGFloat(contentWidth * kCenterWidthMaxCoef - cellsPadding.horizontal)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else if isThirdPortrait == true {
-            relativeFirstWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
-            relativeSecondWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
+            relativeFirstWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef - cellsPadding.horizontal)
+            relativeSecondWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef - cellsPadding.horizontal)
             relativeThirdWidth = CGFloat(contentWidth * kNotCenterWidthMinCoef)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else {
-            return [CGFloat](repeating: contentWidth / CGFloat(kMaxCellsInRow), count: Int(kMaxCellsInRow))
+            let cellWidth = (contentWidth - 2 * cellsPadding.horizontal) / CGFloat(kMaxCellsInRow)
+            return [CGFloat](repeating: cellWidth, count: Int(kMaxCellsInRow))
         }
     }
 }
