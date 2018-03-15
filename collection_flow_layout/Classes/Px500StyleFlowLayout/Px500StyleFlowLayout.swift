@@ -40,12 +40,12 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         let cellHeight = collectionView!.frame.height / CGFloat(visibleRowsCount)
         
         var index: Int = 0
-        var yOffset: CGFloat = 0
+        var yOffset: CGFloat = contentPadding.vertical
         
         for i in 0..<dict.count - 1 {
             let cellsInRow = dict[i]!
             
-            var xOffset: CGFloat = 0
+            var xOffset: CGFloat = contentPadding.horizontal
             var cellsSizes = [CGSize]()
             
             for i in index..<(index + cellsInRow)  {
@@ -62,18 +62,18 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 
                 let currentCellWidth = cellWidthsPercents[j]
-                attributes.frame = CGRect(x: xOffset, y: yOffset, width: currentCellWidth, height: cellHeight)
+                attributes.frame = CGRect(x: xOffset, y: (yOffset + cellsPadding.vertical), width: currentCellWidth, height: cellHeight)
                 
                 addCachedLayoutAttributes(attributes: attributes)
                 index += 1
                 xOffset += currentCellWidth
             }
             
-            yOffset += cellHeight
+            yOffset += (cellHeight + cellsPadding.vertical)
         }
         
         contentSize.width = contentCollectionView.frame.size.width
-        contentSize.height = CGFloat(rowCount - 1) * cellHeight
+        contentSize.height = CGFloat(rowCount - 1) * (cellHeight + cellsPadding.vertical) + contentPadding.vertical
     }
     
     private func convertCellWidthsToRelative(cellsSizes: [CGSize]) -> [CGFloat] {
@@ -82,7 +82,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         }
         
         if cellsSizes.count == 1 {
-            return [contentCollectionView.frame.size.width]
+            return [contentCollectionView.frame.size.width - 2 * contentPadding.horizontal]
         } else if cellsSizes.count == 2 {
             return calculateDoubleCells(cellsSizes: cellsSizes)
         } else if cellsSizes.count == 3 {
@@ -100,17 +100,19 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         let firstCellSize = cellsSizes[0]
         let secondCellSize = cellsSizes[1]
         
-        let halfContentWidth = contentCollectionView.frame.width / 2
+        let contentWidth = contentCollectionView.frame.width  - 2 * contentPadding.horizontal
+        
+        let halfContentWidth = contentWidth / 2
         
         let coefficient = firstCellSize.width / secondCellSize.width
         
         if coefficient < kFullPercents {
             let relativeFirst = halfContentWidth * coefficient
-            let relativeSecond = contentCollectionView.frame.size.width - relativeFirst
+            let relativeSecond = contentWidth - relativeFirst
             return [relativeFirst, relativeSecond]
         } else {
             let relativeFirst = halfContentWidth / coefficient
-            let relativeSecond = contentCollectionView.frame.size.width - relativeFirst
+            let relativeSecond = contentWidth - relativeFirst
             return [relativeSecond, relativeFirst]
         }
     }
@@ -120,6 +122,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
             return [CGFloat]()
         }
         
+        let contentWidth = contentCollectionView.frame.width  - 2 * contentPadding.horizontal
+
         let firstCellSize = cellsSizes[0]
         let secondCellSize = cellsSizes[1]
         let thirdCellSize = cellsSizes[2]
@@ -133,25 +137,25 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         var relativeThirdWidth: CGFloat = 0
         
         if isFirstPortrait == true {
-            relativeFirstWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMinCoef)
-            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
-            relativeThirdWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
+            relativeFirstWidth = CGFloat(contentWidth * kNotCenterWidthMinCoef)
+            relativeSecondWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
+            relativeThirdWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else if isSecondPortrait == true {
-            relativeFirstWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMaxCoef)
-            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMinCoef)
-            relativeThirdWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMaxCoef)
+            relativeFirstWidth = CGFloat(contentWidth * kCenterWidthMaxCoef)
+            relativeSecondWidth = CGFloat(contentWidth * kCenterWidthMinCoef)
+            relativeThirdWidth = CGFloat(contentWidth * kCenterWidthMaxCoef)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else if isThirdPortrait == true {
-            relativeFirstWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
-            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
-            relativeThirdWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMinCoef)
+            relativeFirstWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
+            relativeSecondWidth = CGFloat(contentWidth * kNotCenterWidthMaxCoef)
+            relativeThirdWidth = CGFloat(contentWidth * kNotCenterWidthMinCoef)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else {
-            return [CGFloat](repeating: contentCollectionView.frame.size.width / CGFloat(kMaxCellsInRow), count: Int(kMaxCellsInRow))
+            return [CGFloat](repeating: contentWidth / CGFloat(kMaxCellsInRow), count: Int(kMaxCellsInRow))
         }
     }
 }
