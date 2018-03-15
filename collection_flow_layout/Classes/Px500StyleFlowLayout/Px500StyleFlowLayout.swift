@@ -12,8 +12,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
     private let kMaxCellsInRow: UInt32 = 3
     private let kCenterWidthMinCoef: CGFloat = 0.2
     private let kCenterWidthMaxCoef: CGFloat = 0.4
-    private let kNotCenterWidthMinCoef: CGFloat = 0.25
-    private let kNotCenterWidthMaxCoef: CGFloat = 0.375
+    private let kNotCenterWidthMinCoef: CGFloat = 0.22
+    private let kNotCenterWidthMaxCoef: CGFloat = 0.39
     
     public var visibleRowsCount: Int = 5
     
@@ -67,7 +67,6 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
                 index += 1
                 xOffset += currentCellWidth
             }
-            
             
             yOffset += cellHeight
         }
@@ -134,8 +133,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         
         if isFirstPortrait == true {
             relativeFirstWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMinCoef)
-            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMaxCoef)
-            relativeThirdWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMaxCoef)
+            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
+            relativeThirdWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else if isSecondPortrait == true {
@@ -145,13 +144,13 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else if isThirdPortrait == true {
-            relativeFirstWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMaxCoef)
-            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kCenterWidthMaxCoef)
+            relativeFirstWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
+            relativeSecondWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMaxCoef)
             relativeThirdWidth = CGFloat(contentCollectionView.frame.size.width * kNotCenterWidthMinCoef)
             
             return [relativeFirstWidth, relativeSecondWidth, relativeThirdWidth]
         } else {
-            return [CGFloat](repeating: contentCollectionView.frame.size.width / 3, count: 3)
+            return [CGFloat](repeating: contentCollectionView.frame.size.width / CGFloat(kMaxCellsInRow), count: Int(kMaxCellsInRow))
         }
     }
 }
