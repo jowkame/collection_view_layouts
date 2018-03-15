@@ -43,8 +43,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
             var xOffset: CGFloat = 0
             var cellsWidths = [CGFloat]()
             
-            for _ in 0..<cellsInRow  {
-                let indexPath = IndexPath(item: index, section: 0)
+            for i in index..<(index + cellsInRow)  {
+                let indexPath = IndexPath(item: i, section: 0)
                 let contentSize = delegate!.cellSize(indexPath: indexPath)
                 
                 cellsWidths.append(contentSize.width)
@@ -69,6 +69,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         }
         
         contentSize.width = contentCollectionView.frame.size.width
+        contentSize.height = CGFloat(rowCount - 1) * cellHeight
     }
     
     private func convertCellWidthsToRelative(cellWidths: [CGFloat]) -> [CGFloat] {
@@ -79,11 +80,52 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         if cellWidths.count == 1 {
             return [contentCollectionView.frame.size.width]
         } else if cellWidths.count == 2 {
-            return [CGFloat](repeating: contentCollectionView.frame.size.width / 2, count: 2)
+            return calculateDoubleCells(cellWidths: cellWidths)
         } else if cellWidths.count == 3 {
-            return [CGFloat](repeating: contentCollectionView.frame.size.width / 3, count: 3)
+//            return [CGFloat](repeating: contentCollectionView.frame.size.width / 3, count: 3)
+            return calculateThreeCells(cellWidths: cellWidths)
         }
         
         return [CGFloat(0)]
     }
+    
+    private func calculateDoubleCells(cellWidths: [CGFloat]) -> [CGFloat] {
+        guard let contentCollectionView = collectionView, delegate != nil else {
+            return [CGFloat]()
+        }
+        
+        let firstCellWidth = cellWidths[0]
+        let secondCellWidth = cellWidths[1]
+        
+        let halfContentWidth = contentCollectionView.frame.width / 2
+        
+        let coefficient = firstCellWidth / secondCellWidth
+        
+        if coefficient < 1 {
+            let relativeFirst = halfContentWidth * coefficient
+            let relativeSecond = contentCollectionView.frame.size.width - relativeFirst
+            return [relativeFirst, relativeSecond]
+        } else {
+            let relativeFirst = halfContentWidth / coefficient
+            let relativeSecond = contentCollectionView.frame.size.width - relativeFirst
+            return [relativeSecond, relativeFirst]
+        }
+    }
+    
+    private func calculateThreeCells(cellWidths: [CGFloat]) -> [CGFloat] {
+        guard let contentCollectionView = collectionView, delegate != nil else {
+            return [CGFloat]()
+        }
+        
+        let firstCellWidth = cellWidths[0]
+        let secondCellWidth = cellWidths[1]
+        let thirdCellWidth = cellWidths[2]
+        
+        
+        
+        return [CGFloat](repeating: contentCollectionView.frame.size.width / 3, count: 3)
+        
+        
+    }
+    
 }
