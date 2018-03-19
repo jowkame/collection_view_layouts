@@ -17,6 +17,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
     private let kFullPercents: CGFloat = 1
     
     public var visibleRowsCount: Int = 5
+    public var layoutConfiguration = Dictionary<Int, Int>()
     
     override public func calculateCollectionViewCellsFrames() {
         guard let contentCollectionView = collectionView, delegate != nil else {
@@ -25,16 +26,19 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         
         let itemsCount = contentCollectionView.numberOfItems(inSection: 0)
 
-        var dict = Dictionary<Int, Int>()
         var sum: Int = 0
         var rowCount: Int = 0
         
-        while sum < itemsCount {
-            let cellsInRowCount = arc4random_uniform(kMaxCellsInRow) + kMinCellsInRow
-            sum += Int(cellsInRowCount)
-            dict[rowCount] = Int(cellsInRowCount)
-            
-            rowCount += 1
+        if layoutConfiguration.count == 0 {            
+            while sum < itemsCount {
+                let cellsInRowCount = arc4random_uniform(kMaxCellsInRow) + kMinCellsInRow
+                sum += Int(cellsInRowCount)
+                layoutConfiguration[rowCount] = Int(cellsInRowCount)
+                
+                rowCount += 1
+            }
+        } else {
+            rowCount = layoutConfiguration.count
         }
         
         let cellHeight = collectionView!.frame.height / CGFloat(visibleRowsCount)
@@ -42,8 +46,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         var index: Int = 0
         var yOffset: CGFloat = contentPadding.vertical
         
-        for i in 0..<dict.count - 1 {
-            let cellsInRow = dict[i]!
+        for i in 0..<layoutConfiguration.count - 1 {
+            let cellsInRow = layoutConfiguration[i]!
             
             var xOffset: CGFloat = contentPadding.horizontal
             var cellsSizes = [CGSize]()

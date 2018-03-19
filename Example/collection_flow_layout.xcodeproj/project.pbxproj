@@ -21,6 +21,8 @@
 		8C3AABA720455EE5000E967B /* PickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9C20455EE5000E967B /* PickerDelegate.swift */; };
 		8C3AABA920455EE5000E967B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9F20455EE5000E967B /* Font.swift */; };
 		8C3AABAA20455EE5000E967B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AABA020455EE5000E967B /* Color.swift */; };
+		8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */; };
+		8C99515E205FF5340090E8E0 /* 500pxStyleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */; };
 		8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */; };
 		8CB197922046D370005D8021 /* ContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9620455EE5000E967B /* ContentDataSource.swift */; };
 		8CB197932046D383005D8021 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9820455EE5000E967B /* ContentCell.swift */; };
@@ -72,6 +74,8 @@
 		8C3AAB9C20455EE5000E967B /* PickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerDelegate.swift; sourceTree = "<group>"; };
 		8C3AAB9F20455EE5000E967B /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8C3AABA020455EE5000E967B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
+		8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxStyleDelegateMock.swift; sourceTree = "<group>"; };
 		8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
 		8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFlowDelegate.swift; sourceTree = "<group>"; };
 		8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutTypes.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				8C7709B9205BC3C90080A8D4 /* 500px */,
 				8CB1979E2046FFE7005D8021 /* PinterestLayout */,
 				8CB197982046EC94005D8021 /* TagsLayout */,
 				607FACEB1AFB9204008FA782 /* ContentDynamicLayoutSpec.swift */,
@@ -234,6 +239,15 @@
 				8C3AABA020455EE5000E967B /* Color.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C7709B9205BC3C90080A8D4 /* 500px */ = {
+			isa = PBXGroup;
+			children = (
+				8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */,
+				8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */,
+			);
+			name = 500px;
 			sourceTree = "<group>";
 		};
 		8CB197982046EC94005D8021 /* TagsLayout */ = {
@@ -495,10 +509,12 @@
 				8CB197A12047000E005D8021 /* PinterestFlowDelegate.swift in Sources */,
 				8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */,
 				8CB197952046D397005D8021 /* Font.swift in Sources */,
+				8C99515E205FF5340090E8E0 /* 500pxStyleDelegateMock.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* ContentDynamicLayoutSpec.swift in Sources */,
 				8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */,
 				8CB197992046EDB5005D8021 /* TagsFlowDelegate.swift in Sources */,
 				8CB197942046D394005D8021 /* Color.swift in Sources */,
+				8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */,
 				8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */,
 				8CB197932046D383005D8021 /* ContentCell.swift in Sources */,
 				8CD685352056BBAB000ECEF5 /* PinterestFourElementsDelegateMock.swift in Sources */,
