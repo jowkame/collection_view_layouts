@@ -1,4 +1,4 @@
-po //
+//
 //  500pxStyleFlowLayoutSpec.swift
 //  collection_flow_layout_Example
 //
@@ -47,35 +47,39 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
         }
         
         describe("Check 500px style flow layout with default settings") {
-//            it("should have every cell valid width") {
-//                let px500FlowLayout = self.configure500PxFlowLayout(items: items)
-//                let attributes = px500FlowLayout.cachedLayoutAttributes
-//                
-//                for attr in attributes {
-//                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(UIScreen.main.bounds.width))
-//                }
-//            }
+            it("should have every cell valid width") {
+                let px500FlowLayout = self.configure500PxFlowLayout(items: items)
+                let attributes = px500FlowLayout.cachedLayoutAttributes
+                
+                for attr in attributes {
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(UIScreen.main.bounds.width))
+                }
+            }
             
             it("should have every cell valid frame") {
                 let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
                 let layoutConfiguration = [0: 1, 1: 2, 2: 3]
+                let defaultMaxVisibleRows: Int = 5
                 let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, isCellsTransefered: true, items: items)
                 let attributes = px500FlowLayout.cachedLayoutAttributes
                 
-//                let firstCellAttributes = attributes[0]
-//                let secondCellAttributes = attributes[1]
-//                let thirdCellAttributes = attributes[2]
-//                let fourthCellAttributes = attributes[3]
-//                let fifthCellAttributes = attributes[4]
-//
+                let firstCellAttributes = attributes[0]
+                let secondCellAttributes = attributes[1]
+                let thirdCellAttributes = attributes[2]
+                let fourthCellAttributes = attributes[3]
+                let fifthCellAttributes = attributes[4]
+                let sixthCellAttributes = attributes[5]
                 
-                let a = 10
-                
-                print()
-//                expect(firstCellAttributes.frame).to(equal(CGRect(x: 0, y: 0, width: 100, height: 100)))
+                let screenWidth = UIScreen.main.bounds.width
+                let rowHeight = px500FlowLayout.collectionView!.frame.height / CGFloat(defaultMaxVisibleRows)
 
+                expect(firstCellAttributes.frame).to(equal(CGRect(x: 0, y: 0, width: screenWidth, height: rowHeight)))
+                expect(secondCellAttributes.frame).to(equal(CGRect(x: 0, y: rowHeight, width: screenWidth / 2, height: rowHeight)))
+                expect(thirdCellAttributes.frame).to(equal(CGRect(x: screenWidth / 2, y: rowHeight, width: screenWidth / 2, height: rowHeight)))
+                expect(fourthCellAttributes.frame).to(equal(CGRect(x: 0, y: 2 * rowHeight, width: screenWidth / 3, height: rowHeight)))
+                expect(fifthCellAttributes.frame).to(equal(CGRect(x: screenWidth / 3, y: 2 * rowHeight, width: screenWidth / 3, height: rowHeight)))
+                expect(sixthCellAttributes.frame).to(equal(CGRect(x: (screenWidth / 3) * 2, y: 2 * rowHeight, width: screenWidth / 3, height: rowHeight)))
             }
-            
         }
     }
     
