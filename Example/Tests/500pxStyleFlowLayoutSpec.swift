@@ -158,6 +158,13 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                     expect(item.frame.height).to(beCloseTo(px500FlowLayout.collectionView!.frame.height / CGFloat(3)))
                 }
             }
+            
+            it("should have zero values for empty items array") {
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: Dictionary<Int, Int>(), isCellsTransefered: true, items: [String]())
+                let attributes = px500FlowLayout.cachedLayoutAttributes
+                
+                expect(attributes.count).to(equal(0))
+            }
         }
     }
     

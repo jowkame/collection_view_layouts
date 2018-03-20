@@ -88,30 +88,22 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
     }
     
     private func convertCellWidthsToRelative(cellsSizes: [CGSize]) -> [CGFloat] {
-        guard let contentCollectionView = collectionView, delegate != nil else {
-            return [CGFloat]()
-        }
-        
         if cellsSizes.count == 1 {
-            return [contentCollectionView.frame.size.width - 2 * contentPadding.horizontal]
+            return [collectionView!.frame.size.width - 2 * contentPadding.horizontal]
         } else if cellsSizes.count == 2 {
             return calculateDoubleCells(cellsSizes: cellsSizes)
         } else if cellsSizes.count == 3 {
             return calculateThreeCells(cellsSizes: cellsSizes)
+        } else {
+            return [CGFloat(0)]
         }
-        
-        return [CGFloat(0)]
     }
     
     private func calculateDoubleCells(cellsSizes: [CGSize]) -> [CGFloat] {
-        guard let contentCollectionView = collectionView, delegate != nil else {
-            return [CGFloat]()
-        }
-        
         let firstCellSize = cellsSizes[0]
         let secondCellSize = cellsSizes[1]
         
-        let contentWidth = contentCollectionView.frame.width  - 2 * contentPadding.horizontal
+        let contentWidth = collectionView!.frame.width  - 2 * contentPadding.horizontal
         
         let halfContentWidth = contentWidth / 2
         
@@ -129,11 +121,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
     }
     
     private func calculateThreeCells(cellsSizes: [CGSize]) -> [CGFloat] {
-        guard let contentCollectionView = collectionView, delegate != nil else {
-            return [CGFloat]()
-        }
-        
-        let contentWidth = contentCollectionView.frame.width  - 2 * contentPadding.horizontal
+        let contentWidth = collectionView!.frame.width  - 2 * contentPadding.horizontal
 
         let firstCellSize = cellsSizes[0]
         let secondCellSize = cellsSizes[1]

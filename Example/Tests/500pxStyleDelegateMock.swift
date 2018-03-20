@@ -23,7 +23,7 @@ class Px500FlowDelegateMock: ContentDynamicLayoutDelegate {
     func cellSize(indexPath: IndexPath) -> CGSize {
         isCellSizeWasCalled = true
         
-        return cellSizes[indexPath.row]
+        return (indexPath.row < items.count) ? cellSizes[indexPath.row] : .zero
     }
 }
 
