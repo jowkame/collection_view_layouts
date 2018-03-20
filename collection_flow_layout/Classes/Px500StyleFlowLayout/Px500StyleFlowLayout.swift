@@ -72,7 +72,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 
                 let currentCellWidth = cellWidthsPercents[j]
-                attributes.frame = CGRect(x: xOffset, y: (yOffset + cellsPadding.vertical), width: currentCellWidth, height: cellHeight)
+                                
+                attributes.frame = CGRect(x: xOffset, y: yOffset, width: currentCellWidth, height: cellHeight)
                 
                 addCachedLayoutAttributes(attributes: attributes)
                 index += 1
