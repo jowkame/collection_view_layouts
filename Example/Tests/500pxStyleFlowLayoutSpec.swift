@@ -81,6 +81,38 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                 expect(sixthCellAttributes.frame).to(equal(CGRect(x: (screenWidth / 3) * 2, y: 2 * rowHeight, width: screenWidth / 3, height: rowHeight)))
             }
         }
+        
+        describe("Check 500px style flow layout with custom settings") {
+            it("should have every cell valid width") {
+                let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
+                let layoutConfiguration = [0: 1, 1: 2, 2: 3]
+                let defaultMaxVisibleRows: Int = 5
+                
+                let hPadding: CGFloat = 10
+                let vPadding: CGFloat = 10
+                let contentPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
+                
+                let px500FlowLayout = self.configure500PxFlowLayout(contentPadding: contentPadding, layoutConfiguration: layoutConfiguration, isCellsTransefered: true, items: items)
+                let attributes = px500FlowLayout.cachedLayoutAttributes
+                
+                let firstCellAttributes = attributes[0]
+                let secondCellAttributes = attributes[1]
+                let thirdCellAttributes = attributes[2]
+                let fourthCellAttributes = attributes[3]
+                let fifthCellAttributes = attributes[4]
+                let sixthCellAttributes = attributes[5]
+                
+                let screenWidth = UIScreen.main.bounds.width
+                let rowHeight = px500FlowLayout.collectionView!.frame.height / CGFloat(defaultMaxVisibleRows)
+                
+                expect(firstCellAttributes.frame).to(beCloseTo(CGRect(x: hPadding, y: vPadding, width: screenWidth - 2 * hPadding, height: rowHeight)))
+                expect(secondCellAttributes.frame).to(beCloseTo(CGRect(x: hPadding, y: rowHeight + vPadding, width: screenWidth / 2 - hPadding, height: rowHeight)))
+                expect(thirdCellAttributes.frame).to(beCloseTo(CGRect(x: screenWidth / 2, y: rowHeight + vPadding, width: screenWidth / 2 - hPadding, height: rowHeight)))
+                expect(fourthCellAttributes.frame).to(beCloseTo(CGRect(x: hPadding, y: 2 * rowHeight + vPadding, width: (screenWidth - 2 * hPadding) / 3, height: rowHeight)))
+                expect(fifthCellAttributes.frame).to(beCloseTo(CGRect(x: (screenWidth - 2 * hPadding) / 3 + hPadding, y: 2 * rowHeight + vPadding, width: (screenWidth - 2 * hPadding) / 3, height: rowHeight)))
+                expect(sixthCellAttributes.frame).to(beCloseTo(CGRect(x: ((screenWidth - 2 * hPadding) / 3) * 2 + hPadding, y: 2 * rowHeight + vPadding, width: (screenWidth - 2 * hPadding) / 3, height: rowHeight)))
+            }
+        }
     }
     
     private func configure500PxFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), layoutConfiguration: Dictionary<Int, Int> = Dictionary<Int, Int>(),  cellsPadding: ItemsPadding = ItemsPadding(), isCellsTransefered: Bool = false, align: DynamicContentAlign = .left, items: [String]) -> Px500StyleFlowLayout {
