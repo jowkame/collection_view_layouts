@@ -12,6 +12,13 @@ import Fakery
 @testable import collection_flow_layout
 
 class Px500StyleFlowLayoutSpec: QuickSpec {
+    enum ContentType {
+        case random
+        case baseFive
+        case singlePortrait
+        case lastPortrait
+    }
+    
     private let k500PxFlowLayoutMaxItems: UInt32 = 50
     private let k500PxFlowLayoutMinItems: UInt32 = 10
     
@@ -60,7 +67,7 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                 let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
                 let layoutConfiguration = [0: 1, 1: 2, 2: 3]
                 let defaultMaxVisibleRows: Int = 5
-                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, isCellsTransefered: true, items: items)
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, contentType: .baseFive, items: items)
                 let attributes = px500FlowLayout.cachedLayoutAttributes
                 
                 let firstCellAttributes = attributes[0]
@@ -92,7 +99,7 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                 let vPadding: CGFloat = 10
                 let contentPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
                 
-                let px500FlowLayout = self.configure500PxFlowLayout(contentPadding: contentPadding, layoutConfiguration: layoutConfiguration, isCellsTransefered: true, items: items)
+                let px500FlowLayout = self.configure500PxFlowLayout(contentPadding: contentPadding, layoutConfiguration: layoutConfiguration, contentType: .baseFive, items: items)
                 let attributes = px500FlowLayout.cachedLayoutAttributes
                 
                 let firstCellAttributes = attributes[0]
@@ -122,7 +129,7 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                 let vPadding: CGFloat = 8
                 let cellsPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
                 
-                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, cellsPadding: cellsPadding, isCellsTransefered: true, items: items)
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, cellsPadding: cellsPadding, contentType: .baseFive, items: items)
                 let attributes = px500FlowLayout.cachedLayoutAttributes
                 
                 let firstCellAttributes = attributes[0]
@@ -151,7 +158,7 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                 let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
                 let layoutConfiguration = [0: 1, 1: 2, 2: 3]
                 
-                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, visibleRowsCount: 3, isCellsTransefered: true, items: items)
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, visibleRowsCount: 3, contentType: .baseFive, items: items)
                 let attributes = px500FlowLayout.cachedLayoutAttributes
                 
                 for item in attributes {
@@ -159,8 +166,50 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
                 }
             }
             
+            it("should have valid central portrait mode for three items") {
+                let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
+                let layoutConfiguration = [0: 1, 1: 2, 2: 3]
+                
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, visibleRowsCount: 3, contentType: .singlePortrait, items: items)
+                let attributes = px500FlowLayout.cachedLayoutAttributes
+                
+                let fourthCellAttributes = attributes[3]
+                let fifthCellAttributes = attributes[4]
+                let sixthCellAttributes = attributes[5]
+                
+                let kCenterWidthMinCoef: CGFloat = 0.2
+                let kCenterWidthMaxCoef: CGFloat = 0.4
+                
+                let screenWidth = UIScreen.main.bounds.width
+
+                expect(fourthCellAttributes.frame.width).to(beCloseTo(screenWidth * kCenterWidthMaxCoef))
+                expect(fifthCellAttributes.frame.width).to(beCloseTo(screenWidth * kCenterWidthMinCoef))
+                expect(sixthCellAttributes.frame.width).to(beCloseTo(screenWidth * kCenterWidthMaxCoef))
+            }
+            
+            it("should have valid last portrait mode for three items") {
+                let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
+                let layoutConfiguration = [0: 1, 1: 2, 2: 3]
+                
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, visibleRowsCount: 3, contentType: .lastPortrait, items: items)
+                let attributes = px500FlowLayout.cachedLayoutAttributes
+                
+                let fourthCellAttributes = attributes[3]
+                let fifthCellAttributes = attributes[4]
+                let sixthCellAttributes = attributes[5]
+                
+                let kNotCenterWidthMinCoef: CGFloat = 0.22
+                let kNotCenterWidthMaxCoef: CGFloat = 0.39
+                
+                let screenWidth = UIScreen.main.bounds.width
+                
+                expect(fourthCellAttributes.frame.width).to(beCloseTo(screenWidth * kNotCenterWidthMaxCoef))
+                expect(fifthCellAttributes.frame.width).to(beCloseTo(screenWidth * kNotCenterWidthMaxCoef))
+                expect(sixthCellAttributes.frame.width).to(beCloseTo(screenWidth * kNotCenterWidthMinCoef))
+            }
+            
             it("should have zero values for empty items array") {
-                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: Dictionary<Int, Int>(), isCellsTransefered: true, items: [String]())
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: Dictionary<Int, Int>(), contentType: .baseFive, items: [String]())
                 let attributes = px500FlowLayout.cachedLayoutAttributes
                 
                 expect(attributes.count).to(equal(0))
@@ -168,11 +217,22 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
         }
     }
     
-    private func configure500PxFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), layoutConfiguration: Dictionary<Int, Int> = Dictionary<Int, Int>(),  cellsPadding: ItemsPadding = ItemsPadding(), visibleRowsCount: Int = 5, isCellsTransefered: Bool = false, align: DynamicContentAlign = .left, items: [String]) -> Px500StyleFlowLayout {
-        let flowDelegate = Px500FlowDelegateMock(items: items)
+    private func configure500PxFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), layoutConfiguration: Dictionary<Int, Int> = Dictionary<Int, Int>(),  cellsPadding: ItemsPadding = ItemsPadding(), visibleRowsCount: Int = 5, contentType: ContentType = .random, align: DynamicContentAlign = .left, items: [String]) -> Px500StyleFlowLayout {
+        var flowDelegate: ContentDynamicLayoutDelegate! = nil
+        
+        switch contentType {
+        case .random:
+            flowDelegate = Px500FlowDelegateMock(items: items)
+        case .baseFive:
+            flowDelegate = Px500FiveElementsDelegateMock()
+        case .singlePortrait:
+            flowDelegate = Px500CentralPortraitDelegateMock()
+        case .lastPortrait:
+            flowDelegate = Px500LastPortraitDelegateMock()
+        }
+        
         let px500FlowLayout = Px500StyleFlowLayout()
-        let fiveElementsDelegateMock = Px500FiveElementsDelegateMock()
-        px500FlowLayout.delegate = isCellsTransefered ? fiveElementsDelegateMock : flowDelegate
+        px500FlowLayout.delegate = flowDelegate
         px500FlowLayout.layoutConfiguration = layoutConfiguration
         px500FlowLayout.visibleRowsCount = visibleRowsCount
         
@@ -191,7 +251,16 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
         expect(px500FlowLayout.collectionView).notTo(beNil())
         
         _ = flowDelegate.cellSize(indexPath: IndexPath(row: 0, section: 0))
-        expect(flowDelegate.isCellSizeWasCalled).to(beTrue())
+        
+        if flowDelegate is Px500FlowDelegateMock {
+            expect((flowDelegate as! Px500FlowDelegateMock).isCellSizeWasCalled).to(beTrue())
+        } else if flowDelegate is Px500FiveElementsDelegateMock {
+            expect((flowDelegate as! Px500FiveElementsDelegateMock).isCellSizeWasCalled).to(beTrue())
+        } else if flowDelegate is Px500CentralPortraitDelegateMock {
+            expect((flowDelegate as! Px500CentralPortraitDelegateMock).isCellSizeWasCalled).to(beTrue())
+        } else if flowDelegate is Px500LastPortraitDelegateMock {
+            expect((flowDelegate as! Px500LastPortraitDelegateMock).isCellSizeWasCalled).to(beTrue())
+        }
         
         return px500FlowLayout
     }

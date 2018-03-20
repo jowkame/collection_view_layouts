@@ -94,9 +94,8 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
             return calculateDoubleCells(cellsSizes: cellsSizes)
         } else if cellsSizes.count == 3 {
             return calculateThreeCells(cellsSizes: cellsSizes)
-        } else {
-            return [CGFloat(0)]
         }
+        return [CGFloat(0)]
     }
     
     private func calculateDoubleCells(cellsSizes: [CGSize]) -> [CGFloat] {

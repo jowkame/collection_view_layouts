@@ -37,6 +37,8 @@
 		8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */; };
 		8CD685352056BBAB000ECEF5 /* PinterestFourElementsDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD685332056B9E4000ECEF5 /* PinterestFourElementsDelegateMock.swift */; };
 		8CF3337F20612E1800E3908D /* MatcherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3337D20612DC500E3908D /* MatcherExtension.swift */; };
+		8CF3338220614AB500E3908D /* 500pxCentralPortraitDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3338020614A3200E3908D /* 500pxCentralPortraitDelegateMock.swift */; };
+		8CF3338520614D1300E3908D /* 500pxLastPortraitDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3338320614CF700E3908D /* 500pxLastPortraitDelegateMock.swift */; };
 		AB8DA153A878015AAD84C918 /* Pods_collection_flow_layout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F9665BE8BD302558DB0B03 /* Pods_collection_flow_layout_Example.framework */; };
 		E9200117C13CD96C7B36E056 /* Pods_collection_flow_layout_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389EF9839DBA24CDB9DBD070 /* Pods_collection_flow_layout_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
 		8CD685332056B9E4000ECEF5 /* PinterestFourElementsDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestFourElementsDelegateMock.swift; sourceTree = "<group>"; };
 		8CF3337D20612DC500E3908D /* MatcherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatcherExtension.swift; sourceTree = "<group>"; };
+		8CF3338020614A3200E3908D /* 500pxCentralPortraitDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxCentralPortraitDelegateMock.swift; sourceTree = "<group>"; };
+		8CF3338320614CF700E3908D /* 500pxLastPortraitDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxLastPortraitDelegateMock.swift; sourceTree = "<group>"; };
 		AEDCB129F10BCC1EAC0881F2 /* Pods-collection_flow_layout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection_flow_layout_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-collection_flow_layout_Tests/Pods-collection_flow_layout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CDE196837C4DBF60F73175E7 /* collection_flow_layout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = collection_flow_layout.podspec; path = ../collection_flow_layout.podspec; sourceTree = "<group>"; };
 		D3F9665BE8BD302558DB0B03 /* Pods_collection_flow_layout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection_flow_layout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +256,8 @@
 				8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */,
 				8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */,
 				8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */,
+				8CF3338020614A3200E3908D /* 500pxCentralPortraitDelegateMock.swift */,
+				8CF3338320614CF700E3908D /* 500pxLastPortraitDelegateMock.swift */,
 			);
 			name = 500px;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 				8CF3337F20612E1800E3908D /* MatcherExtension.swift in Sources */,
 				8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */,
 				8CB197952046D397005D8021 /* Font.swift in Sources */,
+				8CF3338520614D1300E3908D /* 500pxLastPortraitDelegateMock.swift in Sources */,
 				8C99515E205FF5340090E8E0 /* 500pxStyleDelegateMock.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* ContentDynamicLayoutSpec.swift in Sources */,
 				8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */,
@@ -525,6 +532,7 @@
 				8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */,
 				8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */,
 				8CB197932046D383005D8021 /* ContentCell.swift in Sources */,
+				8CF3338220614AB500E3908D /* 500pxCentralPortraitDelegateMock.swift in Sources */,
 				8CD685352056BBAB000ECEF5 /* PinterestFourElementsDelegateMock.swift in Sources */,
 				8CB1979A2046EE42005D8021 /* CellSizeProvider.swift in Sources */,
 			);
