@@ -1,4 +1,4 @@
-//
+po //
 //  500pxStyleFlowLayoutSpec.swift
 //  collection_flow_layout_Example
 //
@@ -47,21 +47,44 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
         }
         
         describe("Check 500px style flow layout with default settings") {
-            let px500FlowLayout = self.configure500PxFlowLayout(items: items)
-            let attributes = px500FlowLayout.cachedLayoutAttributes
+//            it("should have every cell valid width") {
+//                let px500FlowLayout = self.configure500PxFlowLayout(items: items)
+//                let attributes = px500FlowLayout.cachedLayoutAttributes
+//                
+//                for attr in attributes {
+//                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(UIScreen.main.bounds.width))
+//                }
+//            }
+            
+            it("should have every cell valid frame") {
+                let items = ["Facebook", "Twitter", "Instagram", "Network", "Framework", "Test"]
+                let layoutConfiguration = [0: 1, 1: 2, 2: 3]
+                let px500FlowLayout = self.configure500PxFlowLayout(layoutConfiguration: layoutConfiguration, isCellsTransefered: true, items: items)
+                let attributes = px500FlowLayout.cachedLayoutAttributes
+                
+//                let firstCellAttributes = attributes[0]
+//                let secondCellAttributes = attributes[1]
+//                let thirdCellAttributes = attributes[2]
+//                let fourthCellAttributes = attributes[3]
+//                let fifthCellAttributes = attributes[4]
+//
+                
+                let a = 10
+                
+                print()
+//                expect(firstCellAttributes.frame).to(equal(CGRect(x: 0, y: 0, width: 100, height: 100)))
 
-            it("should have every cell valid width") {
-                for attr in attributes {
-                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(UIScreen.main.bounds.width))
-                }
-            }            
+            }
+            
         }
     }
     
-    private func configure500PxFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), cellsPadding: ItemsPadding = ItemsPadding(), align: DynamicContentAlign = .left, items: [String]) -> Px500StyleFlowLayout {
+    private func configure500PxFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), layoutConfiguration: Dictionary<Int, Int> = Dictionary<Int, Int>(),  cellsPadding: ItemsPadding = ItemsPadding(), isCellsTransefered: Bool = false, align: DynamicContentAlign = .left, items: [String]) -> Px500StyleFlowLayout {
         let flowDelegate = Px500FlowDelegateMock(items: items)
         let px500FlowLayout = Px500StyleFlowLayout()
-        px500FlowLayout.delegate = flowDelegate
+        let fiveElementsDelegateMock = Px500FiveElementsDelegateMock()
+        px500FlowLayout.delegate = isCellsTransefered ? fiveElementsDelegateMock : flowDelegate
+        px500FlowLayout.layoutConfiguration = layoutConfiguration
         
         px500FlowLayout.contentPadding = contentPadding
         px500FlowLayout.cellsPadding = cellsPadding
@@ -79,9 +102,6 @@ class Px500StyleFlowLayoutSpec: QuickSpec {
         
         _ = flowDelegate.cellSize(indexPath: IndexPath(row: 0, section: 0))
         expect(flowDelegate.isCellSizeWasCalled).to(beTrue())
-        
-        expect(px500FlowLayout.delegate).notTo(beNil())
-        expect(px500FlowLayout.delegate).to(beAKindOf(ContentDynamicLayoutDelegate.self))
         
         return px500FlowLayout
     }

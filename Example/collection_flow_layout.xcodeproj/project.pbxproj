@@ -23,6 +23,7 @@
 		8C3AABAA20455EE5000E967B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AABA020455EE5000E967B /* Color.swift */; };
 		8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */; };
 		8C99515E205FF5340090E8E0 /* 500pxStyleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */; };
+		8C995161206005240090E8E0 /* 500pxFiveElementsDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */; };
 		8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */; };
 		8CB197922046D370005D8021 /* ContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9620455EE5000E967B /* ContentDataSource.swift */; };
 		8CB197932046D383005D8021 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9820455EE5000E967B /* ContentCell.swift */; };
@@ -76,6 +77,7 @@
 		8C3AABA020455EE5000E967B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
 		8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxStyleDelegateMock.swift; sourceTree = "<group>"; };
+		8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxFiveElementsDelegateMock.swift; sourceTree = "<group>"; };
 		8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
 		8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFlowDelegate.swift; sourceTree = "<group>"; };
 		8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutTypes.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */,
 				8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */,
+				8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */,
 			);
 			name = 500px;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */,
 				8CB197992046EDB5005D8021 /* TagsFlowDelegate.swift in Sources */,
 				8CB197942046D394005D8021 /* Color.swift in Sources */,
+				8C995161206005240090E8E0 /* 500pxFiveElementsDelegateMock.swift in Sources */,
 				8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */,
 				8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */,
 				8CB197932046D383005D8021 /* ContentCell.swift in Sources */,

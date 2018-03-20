@@ -28,10 +28,16 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
 
         var sum: Int = 0
         var rowCount: Int = 0
-        
+        var cellsInRowCount: UInt32 = 0
+
         if layoutConfiguration.count == 0 {            
             while sum < itemsCount {
-                let cellsInRowCount = arc4random_uniform(kMaxCellsInRow) + kMinCellsInRow
+                if sum + Int(kMaxCellsInRow) < itemsCount {
+                    cellsInRowCount = arc4random_uniform(kMaxCellsInRow) + kMinCellsInRow
+                } else {
+                    cellsInRowCount = UInt32(itemsCount - sum)
+                }
+                
                 sum += Int(cellsInRowCount)
                 layoutConfiguration[rowCount] = Int(cellsInRowCount)
                 
@@ -46,7 +52,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
         var index: Int = 0
         var yOffset: CGFloat = contentPadding.vertical
         
-        for i in 0..<layoutConfiguration.count - 1 {
+        for i in 0..<rowCount  {
             let cellsInRow = layoutConfiguration[i]!
             
             var xOffset: CGFloat = contentPadding.horizontal
@@ -61,7 +67,7 @@ public class Px500StyleFlowLayout: ContentDynamicLayout {
             
             let cellWidthsPercents = convertCellWidthsToRelative(cellsSizes: cellsSizes)
             
-            for j in 0..<cellsInRow  {
+            for j in 0..<cellsInRow {
                 let indexPath = IndexPath(item: index, section: 0)
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 
