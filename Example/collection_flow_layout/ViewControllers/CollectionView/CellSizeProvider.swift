@@ -22,6 +22,8 @@ class CellSizeProvider {
                 size =  CellSizeProvider.provideTagCellSize(item: item)
             } else if flowType == .pinterest {
                 size = CellSizeProvider.providePinterestCellSize(item: item)
+            } else if flowType == .px500 {
+                size = CellSizeProvider.provide500PxCellSize(item: item)
             }
             
             cellSizes.append(size)
@@ -39,6 +41,13 @@ class CellSizeProvider {
     }
     
     private class func providePinterestCellSize(item: String) -> CGSize {
+        let width = CGFloat(arc4random_uniform(kMaxCellSize) + kMinCellSize)
+        let height = CGFloat(arc4random_uniform(kMaxCellSize) + kMinCellSize)
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    private class func provide500PxCellSize(item: String) -> CGSize {
         let width = CGFloat(arc4random_uniform(kMaxCellSize) + kMinCellSize)
         let height = CGFloat(arc4random_uniform(kMaxCellSize) + kMinCellSize)
         
