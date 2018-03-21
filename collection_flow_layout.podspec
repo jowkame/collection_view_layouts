@@ -42,4 +42,8 @@ TODO: Add long description of the pod here.
     px500_layout.source_files = 'collection_flow_layout/Classes/Px500StyleFlowLayout/*.swift'
   end
 
+  s.subspec 'InstagramLayout' do |instagram_layout|
+    instagram_layout.source_files = 'collection_flow_layout/Classes/InstagramStyleFlowLayout/*.swift'
+  end
+
 end
