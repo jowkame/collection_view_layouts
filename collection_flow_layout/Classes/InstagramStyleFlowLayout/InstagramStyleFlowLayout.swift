@@ -102,7 +102,7 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
             let indexPath = IndexPath(item: item, section: 0)
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
-            if section % 3 == 0 {
+            if section % 4 == 0 {
                 if indexPath.row % 3 == 0 {
                     attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight, height: cellHeight)
                 } else if indexPath.row % 3 == 1 {
@@ -114,7 +114,7 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
                     section += 1
                     yOffset += 2 * cellHeight
                 }
-            } else if section % 3 == 1 {
+            } else if section % 4 == 1 || section % 4 == 3 {
                 let x = CGFloat(indexPath.row % 3) * cellHeight
                 attributes.frame = CGRect(x: x, y: yOffset, width: cellHeight, height: cellHeight)
                 
@@ -127,7 +127,7 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
                     rowCount = 0
                     section += 1
                 }
-            } else if section % 3 == 2 {
+            } else if section % 4 == 2 {
                 if indexPath.row % 3 == 0 {
                     attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
                 } else if indexPath.row % 3 == 1 {
