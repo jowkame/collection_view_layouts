@@ -120,7 +120,8 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
         }
         
         contentSize.width = collectionView!.frame.size.width
-        contentSize.height = CGFloat(section) * cellHeight * CGFloat(2) + cellHeight * 2
+        
+        contentSize.height = yOffset
     }
     
     private func calculateRightPreviewSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
@@ -128,12 +129,13 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
 
         if indexPath.row % 3 == 0 {
             attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight, height: cellHeight)
+            yOffset = (indexPath.row + 1 == itemsCount) ? yOffset + cellHeight : yOffset
         } else if indexPath.row % 3 == 1 {
             let bottomFrame = CGRect(x: 0, y: yOffset + cellHeight, width: cellHeight, height: cellHeight)
             let rightFrame = CGRect(x: cellHeight, y: yOffset, width: cellHeight, height: cellHeight)
             attributes.frame = (indexPath.row + 1 == itemsCount) ? rightFrame : bottomFrame
             
-            yOffset = (indexPath.row + 1 == itemsCount) ?  yOffset : yOffset + cellHeight
+            yOffset += cellHeight
         } else if indexPath.row % 3 == 2 {
             yOffset -= cellHeight
             attributes.frame = CGRect(x: cellHeight, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
@@ -143,6 +145,8 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
     }
     
     private func calculateDefaultSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, rowCount: inout Int, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
+        let itemsCount = collectionView!.numberOfItems(inSection: 0)
+
         let x = CGFloat(indexPath.row % 3) * cellHeight
         attributes.frame = CGRect(x: x, y: yOffset, width: cellHeight, height: cellHeight)
         
@@ -155,6 +159,8 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
             rowCount = 0
             section += 1
         }
+        
+        yOffset = (indexPath.row + 1 == itemsCount && indexPath.row % 3 != 2) ? yOffset + cellHeight : yOffset
     }
     
     private func calculateLeftPreviewSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
@@ -166,6 +172,8 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
             
             let updatedIndex = indexPath.row + 1
             attributes.frame = (updatedIndex == itemsCount || updatedIndex == itemsCount - 1) ? smallFrame : bigFrame
+            
+            yOffset = (indexPath.row + 1 == itemsCount) ? yOffset + cellHeight : yOffset
         } else if indexPath.row % 3 == 1 {
             let centralFrame = CGRect(x: cellHeight, y: yOffset, width: cellHeight, height: cellHeight)
             let rightFrame = CGRect(x: cellHeight * 2, y: yOffset, width: cellHeight, height: cellHeight)
