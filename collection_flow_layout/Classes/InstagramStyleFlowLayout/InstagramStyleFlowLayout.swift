@@ -103,41 +103,11 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
             if section % 4 == 0 {
-                if indexPath.row % 3 == 0 {
-                    attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight, height: cellHeight)
-                } else if indexPath.row % 3 == 1 {
-                    yOffset += cellHeight
-                    attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight, height: cellHeight)
-                } else if indexPath.row % 3 == 2 {
-                    yOffset -= cellHeight
-                    attributes.frame = CGRect(x: cellHeight, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
-                    section += 1
-                    yOffset += 2 * cellHeight
-                }
+                calculateRightPreviewSection(attributes: attributes, indexPath: indexPath, cellHeight: cellHeight, section: &section, yOffset: &yOffset)
             } else if section % 4 == 1 || section % 4 == 3 {
-                let x = CGFloat(indexPath.row % 3) * cellHeight
-                attributes.frame = CGRect(x: x, y: yOffset, width: cellHeight, height: cellHeight)
-                
-                if indexPath.row % 3 == 2 {
-                    yOffset += cellHeight
-                    rowCount += 1
-                }
-                
-                if rowCount == 2 {
-                    rowCount = 0
-                    section += 1
-                }
+                calculateDefaultSection(attributes: attributes, indexPath: indexPath, rowCount: &rowCount, cellHeight: cellHeight, section: &section, yOffset: &yOffset)
             } else if section % 4 == 2 {
-                if indexPath.row % 3 == 0 {
-                    attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
-                } else if indexPath.row % 3 == 1 {
-                    attributes.frame = CGRect(x: cellHeight * 2, y: yOffset, width: cellHeight, height: cellHeight)
-                    yOffset += cellHeight
-                } else if indexPath.row % 3 == 2 {
-                    attributes.frame = CGRect(x: cellHeight * 2, y: yOffset, width: cellHeight, height: cellHeight)
-                    section += 1
-                    yOffset += cellHeight
-                }
+                calculateLeftPreviewSection(attributes: attributes, indexPath: indexPath, cellHeight: cellHeight, section: &section, yOffset: &yOffset)
             }
             
             addCachedLayoutAttributes(attributes: attributes)
@@ -145,5 +115,47 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
         
         contentSize.width = collectionView!.frame.size.width
         contentSize.height = CGFloat(section) * cellHeight * CGFloat(2)
+    }
+    
+    private func calculateRightPreviewSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
+        if indexPath.row % 3 == 0 {
+            attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight, height: cellHeight)
+        } else if indexPath.row % 3 == 1 {
+            yOffset += cellHeight
+            attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight, height: cellHeight)
+        } else if indexPath.row % 3 == 2 {
+            yOffset -= cellHeight
+            attributes.frame = CGRect(x: cellHeight, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
+            section += 1
+            yOffset += 2 * cellHeight
+        }
+    }
+    
+    private func calculateDefaultSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, rowCount: inout Int, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
+        let x = CGFloat(indexPath.row % 3) * cellHeight
+        attributes.frame = CGRect(x: x, y: yOffset, width: cellHeight, height: cellHeight)
+        
+        if indexPath.row % 3 == 2 {
+            yOffset += cellHeight
+            rowCount += 1
+        }
+        
+        if rowCount == 2 {
+            rowCount = 0
+            section += 1
+        }
+    }
+    
+    private func calculateLeftPreviewSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
+        if indexPath.row % 3 == 0 {
+            attributes.frame = CGRect(x: 0, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
+        } else if indexPath.row % 3 == 1 {
+            attributes.frame = CGRect(x: cellHeight * 2, y: yOffset, width: cellHeight, height: cellHeight)
+            yOffset += cellHeight
+        } else if indexPath.row % 3 == 2 {
+            attributes.frame = CGRect(x: cellHeight * 2, y: yOffset, width: cellHeight, height: cellHeight)
+            section += 1
+            yOffset += cellHeight
+        }
     }
 }
