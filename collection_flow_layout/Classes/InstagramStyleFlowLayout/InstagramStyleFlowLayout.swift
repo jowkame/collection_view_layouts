@@ -75,7 +75,7 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
                 yOffset += cellsPadding.vertical
             } else if indexPath.row == 1 {
                 let bottomFrame = CGRect(x: contentPadding.horizontal, y: cellHeight + contentPadding.vertical + cellsPadding.vertical, width: cellHeight, height: cellHeight)
-                let rightFrame = CGRect(x: cellHeight + contentPadding.horizontal, y: contentPadding.vertical, width: cellHeight, height: cellHeight)
+                let rightFrame = CGRect(x: cellHeight + contentPadding.horizontal + cellsPadding.horizontal, y: contentPadding.vertical, width: cellHeight, height: cellHeight)
                 attributes.frame = (itemsCount == 2) ? rightFrame : bottomFrame
                 
             } else if indexPath.row == 2 {
