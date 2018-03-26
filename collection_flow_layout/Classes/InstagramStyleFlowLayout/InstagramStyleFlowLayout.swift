@@ -14,7 +14,7 @@ public enum GridType {
 }
 
 public class InstagramStyleFlowLayout: ContentDynamicLayout {
-    public var gridType: GridType = .onePreviewCell
+    public var gridType: GridType = .regularPreviewCell
     
     override public func calculateCollectionViewCellsFrames() {
         guard collectionView != nil, delegate != nil else {
@@ -77,7 +77,6 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
                 let bottomFrame = CGRect(x: contentPadding.horizontal, y: cellHeight + contentPadding.vertical + cellsPadding.vertical, width: cellHeight, height: cellHeight)
                 let rightFrame = CGRect(x: cellHeight + contentPadding.horizontal + cellsPadding.horizontal, y: contentPadding.vertical, width: cellHeight, height: cellHeight)
                 attributes.frame = (itemsCount == 2) ? rightFrame : bottomFrame
-                
             } else if indexPath.row == 2 {
                 attributes.frame = CGRect(x: cellHeight + contentPadding.horizontal + cellsPadding.horizontal, y: contentPadding.vertical, width: cellHeight * 2 + cellsPadding.horizontal, height: cellHeight * 2 + cellsPadding.vertical)
                 yOffset += cellsPadding.vertical
@@ -103,7 +102,7 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
         let itemsCount = collectionView!.numberOfItems(inSection: 0)
         let collectionViewWidth = collectionView!.frame.width
         
-        let cellHeight = (collectionViewWidth - 2 * contentPadding.horizontal) / 3
+        let cellHeight = (collectionViewWidth - 2 * contentPadding.horizontal - 2 * cellsPadding.vertical) / 3
         var yOffset: CGFloat = contentPadding.vertical
         
         var section: Int = 0
@@ -135,28 +134,29 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
         if indexPath.row % 3 == 0 {
             attributes.frame = CGRect(x: contentPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
             yOffset = (indexPath.row + 1 == itemsCount) ? yOffset + cellHeight : yOffset
+            yOffset = (indexPath.row + 2 == itemsCount) ? yOffset : yOffset + cellsPadding.vertical
         } else if indexPath.row % 3 == 1 {
             let bottomFrame = CGRect(x: contentPadding.horizontal, y: yOffset + cellHeight, width: cellHeight, height: cellHeight)
-            let rightFrame = CGRect(x: cellHeight + contentPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
+            let rightFrame = CGRect(x: cellHeight + contentPadding.horizontal + cellsPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
             attributes.frame = (indexPath.row + 1 == itemsCount) ? rightFrame : bottomFrame
-            
             yOffset += cellHeight
         } else if indexPath.row % 3 == 2 {
+            yOffset -= cellsPadding.vertical
             yOffset -= cellHeight
-            attributes.frame = CGRect(x: cellHeight + contentPadding.horizontal, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
+            attributes.frame = CGRect(x: cellHeight + contentPadding.horizontal + cellsPadding.horizontal, y: yOffset, width: cellHeight * 2 + cellsPadding.horizontal, height: cellHeight * 2 + cellsPadding.vertical)
             section += 1
-            yOffset += 2 * cellHeight
+            yOffset += 2 * (cellHeight + cellsPadding.vertical)
         }
     }
     
     private func calculateDefaultSection(attributes: UICollectionViewLayoutAttributes, indexPath: IndexPath, rowCount: inout Int, cellHeight: CGFloat,  section: inout Int, yOffset: inout CGFloat) {
         let itemsCount = collectionView!.numberOfItems(inSection: 0)
 
-        let x = CGFloat(indexPath.row % 3) * cellHeight + contentPadding.horizontal
+        let x = CGFloat(indexPath.row % 3) * (cellHeight + cellsPadding.horizontal) + contentPadding.horizontal
         attributes.frame = CGRect(x: x, y: yOffset, width: cellHeight, height: cellHeight)
         
         if indexPath.row % 3 == 2 {
-            yOffset += cellHeight
+            yOffset += (cellHeight + cellsPadding.vertical)
             rowCount += 1
         }
         
@@ -172,7 +172,7 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
         let itemsCount = collectionView!.numberOfItems(inSection: 0)
 
         if indexPath.row % 3 == 0 {
-            let bigFrame = CGRect(x: contentPadding.horizontal, y: yOffset, width: cellHeight * 2, height: cellHeight * 2)
+            let bigFrame = CGRect(x: contentPadding.horizontal, y: yOffset, width: cellHeight * 2 + cellsPadding.horizontal, height: cellHeight * 2 + cellsPadding.vertical)
             let smallFrame = CGRect(x: contentPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
             
             let updatedIndex = indexPath.row + 1
@@ -180,16 +180,17 @@ public class InstagramStyleFlowLayout: ContentDynamicLayout {
             
             yOffset = (indexPath.row + 1 == itemsCount) ? yOffset + cellHeight : yOffset
         } else if indexPath.row % 3 == 1 {
-            let centralFrame = CGRect(x: cellHeight + contentPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
-            let rightFrame = CGRect(x: cellHeight * 2 + contentPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
+            let centralFrame = CGRect(x: cellHeight + contentPadding.horizontal + cellsPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
+            let rightFrame = CGRect(x: cellHeight * 2 + contentPadding.horizontal + 2 * cellsPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
             
             attributes.frame = (indexPath.row + 1 == itemsCount) ? centralFrame : rightFrame
             
             yOffset += cellHeight
         } else if indexPath.row % 3 == 2 {
-            attributes.frame = CGRect(x: cellHeight * 2 + contentPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
+            yOffset += cellsPadding.vertical
+            attributes.frame = CGRect(x: cellHeight * 2 + contentPadding.horizontal + 2 * cellsPadding.horizontal, y: yOffset, width: cellHeight, height: cellHeight)
             section += 1
-            yOffset += cellHeight
+            yOffset += cellHeight + (cellsPadding.vertical)
         }
     }
 }
