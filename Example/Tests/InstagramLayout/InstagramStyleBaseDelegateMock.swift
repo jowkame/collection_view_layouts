@@ -11,8 +11,13 @@ import collection_flow_layout
 
 class InstagramStyleBaseDelegateMock: ContentDynamicLayoutDelegate {
     public var isCellSizeWasCalled = false
+    private var cellSizes = [CGSize]()
+
+    init(items: [String]) {
+        cellSizes = CellSizeProvider.provideSizes(items: items, flowType: .instagram)
+    }
     
     func cellSize(indexPath: IndexPath) -> CGSize {
-        return .zero
+        return cellSizes[indexPath.row]
     }
 }
