@@ -25,7 +25,7 @@ class InstagramStyleLayoutSpec: QuickSpec {
         let itemsCount = Int(arc4random_uniform(kInstagramFlowLayoutMaxItems) + kInstagramFlowLayoutMinItems)
         let items = Faker.init().lorem.words(amount: itemsCount).components(separatedBy: .whitespaces)
         
-        describe("Check 500px style flow layout") {
+        describe("Check instagram style flow layout") {
             it("should have default values") {
                 let instagramStyleFlowLayout = InstagramStyleFlowLayout()
                 
@@ -51,9 +51,92 @@ class InstagramStyleLayoutSpec: QuickSpec {
                 expect(instagramStyleFlowLayout.delegate).to(beNil())
             }
         }
+        
+        describe("Check instagram style flow layout with default grid mode") {
+            it("should have every cell valid frame") {
+                let instagramFlowLayout = self.configureInstagramStyleFlowLayout(items: items)
+                let attributes = instagramFlowLayout.cachedLayoutAttributes
+                
+                let screenWidth = UIScreen.main.bounds.width / 3
+                
+                var rowCount: Int = 0
+
+                for attr in attributes {
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(screenWidth))
+                    expect(attr.frame.size.height).to(beLessThanOrEqualTo(screenWidth))
+                    expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * screenWidth))
+                    
+                    if attr.indexPath.row % 3 == 0 {
+                        expect(attr.frame.origin.x).to(equal(0))
+                    } else if attr.indexPath.row % 3 == 1 {
+                        expect(attr.frame.origin.x).to(equal(screenWidth))
+                    } else if attr.indexPath.row % 3 == 2 {
+                        expect(attr.frame.origin.x).to(equal(screenWidth * 2))
+                        
+                        rowCount += 1
+                    }
+                }
+            }
+            
+            it("should have every cell valid frame with content padding") {
+                let hPadding: CGFloat = 10
+                let vPadding: CGFloat = 10
+                let contentPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
+                let instagramFlowLayout = self.configureInstagramStyleFlowLayout(contentPadding: contentPadding, items: items)
+                let attributes = instagramFlowLayout.cachedLayoutAttributes
+                
+                let screenWidth = (UIScreen.main.bounds.width - 2 * hPadding) / 3
+                
+                var rowCount: Int = 0
+                
+                for attr in attributes {
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(screenWidth))
+                    expect(attr.frame.size.height).to(beLessThanOrEqualTo(screenWidth))
+                    expect(attr.frame.origin.y).to(beCloseTo(CGFloat(rowCount) * screenWidth + vPadding))
+                    
+                    if attr.indexPath.row % 3 == 0 {
+                        expect(attr.frame.origin.x).to(equal(hPadding))
+                    } else if attr.indexPath.row % 3 == 1 {
+                        expect(attr.frame.origin.x).to(equal(screenWidth + hPadding))
+                    } else if attr.indexPath.row % 3 == 2 {
+                        expect(attr.frame.origin.x).to(equal(screenWidth * 2 + hPadding))
+                        
+                        rowCount += 1
+                    }
+                }
+            }
+            
+            it("should have every cell valid frame with cells padding") {
+                let hPadding: CGFloat = 8
+                let vPadding: CGFloat = 8
+                let cellsPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
+                let instagramFlowLayout = self.configureInstagramStyleFlowLayout(cellsPadding: cellsPadding, items: items)
+                let attributes = instagramFlowLayout.cachedLayoutAttributes
+                
+                let screenWidth = (UIScreen.main.bounds.width - 2 * hPadding) / 3
+                
+                var rowCount: Int = 0
+                
+                for attr in attributes {
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(screenWidth))
+                    expect(attr.frame.size.height).to(beLessThanOrEqualTo(screenWidth))
+                    expect(attr.frame.origin.y).to(beCloseTo(CGFloat(rowCount) * (screenWidth + vPadding)))
+                    
+                    if attr.indexPath.row % 3 == 0 {
+                        expect(attr.frame.origin.x).to(equal(0))
+                    } else if attr.indexPath.row % 3 == 1 {
+                        expect(attr.frame.origin.x).to(equal(screenWidth + hPadding))
+                    } else if attr.indexPath.row % 3 == 2 {
+                        expect(attr.frame.origin.x).to(equal((screenWidth + hPadding) * 2))
+                        
+                        rowCount += 1
+                    }
+                }
+            }
+        }
     }
     
-    private func configureInstagramStyleFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), cellsPadding: ItemsPadding = ItemsPadding(), columnsCount: Int = 2, contentType: ContentCountType = .oneCell, gridType: GridType = .defaultGrid, items: [String]) -> InstagramStyleFlowLayout {
+    private func configureInstagramStyleFlowLayout(contentPadding: ItemsPadding = ItemsPadding(), cellsPadding: ItemsPadding = ItemsPadding(), contentType: ContentCountType = .oneCell, gridType: GridType = .defaultGrid, items: [String]) -> InstagramStyleFlowLayout {
         var flowDelegate: ContentDynamicLayoutDelegate! = nil
         
         if contentType == .oneCell {
