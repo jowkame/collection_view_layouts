@@ -17,7 +17,7 @@ class InstagramStyleLayoutSpec: QuickSpec {
         case twoCells
         case threeCells
     }
-
+    
     private let kInstagramFlowLayoutMaxItems: UInt32 = 40
     private let kInstagramFlowLayoutMinItems: UInt32 = 20
     
@@ -57,21 +57,21 @@ class InstagramStyleLayoutSpec: QuickSpec {
                 let instagramFlowLayout = self.configureInstagramStyleFlowLayout(items: items)
                 let attributes = instagramFlowLayout.cachedLayoutAttributes
                 
-                let screenWidth = UIScreen.main.bounds.width / 3
+                let cellWidth = UIScreen.main.bounds.width / 3
                 
                 var rowCount: Int = 0
-
+                
                 for attr in attributes {
-                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(screenWidth))
-                    expect(attr.frame.size.height).to(beLessThanOrEqualTo(screenWidth))
-                    expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * screenWidth))
+                    expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                    expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                    expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * cellWidth))
                     
                     if attr.indexPath.row % 3 == 0 {
                         expect(attr.frame.origin.x).to(equal(0))
                     } else if attr.indexPath.row % 3 == 1 {
-                        expect(attr.frame.origin.x).to(equal(screenWidth))
+                        expect(attr.frame.origin.x).to(equal(cellWidth))
                     } else if attr.indexPath.row % 3 == 2 {
-                        expect(attr.frame.origin.x).to(equal(screenWidth * 2))
+                        expect(attr.frame.origin.x).to(equal(cellWidth * 2))
                         
                         rowCount += 1
                     }
@@ -289,6 +289,212 @@ class InstagramStyleLayoutSpec: QuickSpec {
                     }
                 }
                 
+                describe("Check instagram style flow layout with regular preview cell mode") {
+                    it("should have every cell valid frame") {
+                        let items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
+                        let instagramFlowLayout = self.configureInstagramStyleFlowLayout(gridType: .regularPreviewCell, items: items)
+                        let attributes = instagramFlowLayout.cachedLayoutAttributes
+                        
+                        let cellWidth = UIScreen.main.bounds.width / 3
+                        
+                        let firstCellAttributes = attributes[0]
+                        let secondCellAttributes = attributes[1]
+                        let thirdCellAttributes = attributes[2]
+                 
+                        var rowCount: Int = 0
+                        
+                        expect(firstCellAttributes.frame).to(beCloseTo(CGRect(x: 0, y: 0, width: cellWidth, height: cellWidth)))
+                        expect(secondCellAttributes.frame).to(beCloseTo(CGRect(x: 0, y: cellWidth, width: cellWidth, height: cellWidth)))
+                        expect(thirdCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth, y: 0, width: cellWidth * 2, height: cellWidth * 2)))
+                        
+                        rowCount += 2
+                        
+                        for i in 3...8 {
+                            let attr = attributes[i]
+                            
+                            expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * cellWidth))
+                            
+                            if attr.indexPath.row % 3 == 0 {
+                                expect(attr.frame.origin.x).to(equal(0))
+                            } else if attr.indexPath.row % 3 == 1 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth))
+                            } else if attr.indexPath.row % 3 == 2 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth * 2))
+                                
+                                rowCount += 1
+                            }
+                        }
+                        
+                        let firstLeftCellAttributes = attributes[9]
+                        let secondLeftCellAttributes = attributes[10]
+                        let thirdLeftCellAttributes = attributes[11]
+                        
+                        expect(firstLeftCellAttributes.frame).to(beCloseTo(CGRect(x: 0, y: CGFloat(rowCount) * cellWidth, width: cellWidth * 2, height: cellWidth * 2)))
+                        expect(secondLeftCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth * 2, y: CGFloat(rowCount) * cellWidth, width: cellWidth, height: cellWidth)))
+                        expect(thirdLeftCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth * 2, y: CGFloat(rowCount + 1) * cellWidth, width: cellWidth, height: cellWidth)))
+                        
+                        rowCount += 2
+                        
+                        for i in 12...17 {
+                            let attr = attributes[i]
+                            
+                            expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * cellWidth))
+                            
+                            if attr.indexPath.row % 3 == 0 {
+                                expect(attr.frame.origin.x).to(equal(0))
+                            } else if attr.indexPath.row % 3 == 1 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth))
+                            } else if attr.indexPath.row % 3 == 2 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth * 2))
+                                
+                                rowCount += 1
+                            }
+                        }
+                    }
+                    
+                    
+                    it("should have every cell valid frame with content paddings") {
+                        let items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
+                        let vPadding: CGFloat = 10
+                        let hPadding: CGFloat = 10
+                        let contentPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
+                        let instagramFlowLayout = self.configureInstagramStyleFlowLayout(contentPadding: contentPadding, gridType: .regularPreviewCell, items: items)
+                        let attributes = instagramFlowLayout.cachedLayoutAttributes
+                        
+                        let cellWidth = (UIScreen.main.bounds.width - 2 * hPadding) / 3
+                        
+                        let firstCellAttributes = attributes[0]
+                        let secondCellAttributes = attributes[1]
+                        let thirdCellAttributes = attributes[2]
+                        
+                        var rowCount: Int = 0
+                        
+                        expect(firstCellAttributes.frame).to(beCloseTo(CGRect(x: hPadding, y: vPadding, width: cellWidth, height: cellWidth)))
+                        expect(secondCellAttributes.frame).to(beCloseTo(CGRect(x: hPadding, y: cellWidth + vPadding, width: cellWidth, height: cellWidth)))
+                        expect(thirdCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth + hPadding, y: vPadding, width: cellWidth * 2, height: cellWidth * 2)))
+                        
+                        rowCount += 2
+                        
+                        for i in 3...8 {
+                            let attr = attributes[i]
+                            
+                            expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * cellWidth + vPadding))
+                            
+                            if attr.indexPath.row % 3 == 0 {
+                                expect(attr.frame.origin.x).to(equal(hPadding))
+                            } else if attr.indexPath.row % 3 == 1 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth + hPadding))
+                            } else if attr.indexPath.row % 3 == 2 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth * 2 + hPadding))
+                                
+                                rowCount += 1
+                            }
+                        }
+                        
+                        let firstLeftCellAttributes = attributes[9]
+                        let secondLeftCellAttributes = attributes[10]
+                        let thirdLeftCellAttributes = attributes[11]
+                        
+                        expect(firstLeftCellAttributes.frame).to(beCloseTo(CGRect(x: hPadding, y: CGFloat(rowCount) * cellWidth + vPadding, width: cellWidth * 2, height: cellWidth * 2)))
+                        expect(secondLeftCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth * 2 + hPadding, y: CGFloat(rowCount) * cellWidth + vPadding, width: cellWidth, height: cellWidth)))
+                        expect(thirdLeftCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth * 2 + hPadding, y: CGFloat(rowCount + 1) * cellWidth + vPadding, width: cellWidth, height: cellWidth)))
+                        
+                        rowCount += 2
+                        
+                        for i in 12...17 {
+                            let attr = attributes[i]
+                            
+                            expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.origin.y).to(beCloseTo(CGFloat(rowCount) * cellWidth + vPadding))
+                            
+                            if attr.indexPath.row % 3 == 0 {
+                                expect(attr.frame.origin.x).to(equal(hPadding))
+                            } else if attr.indexPath.row % 3 == 1 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth + hPadding))
+                            } else if attr.indexPath.row % 3 == 2 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth * 2 + hPadding))
+                                
+                                rowCount += 1
+                            }
+                        }
+                    }
+                    
+                    it("should have every cell valid frame with cells paddings") {
+                        let items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
+                        let vPadding: CGFloat = 8
+                        let hPadding: CGFloat = 8
+                        let cellsPadding = ItemsPadding(horizontal: hPadding, vertical: vPadding)
+                        let instagramFlowLayout = self.configureInstagramStyleFlowLayout(cellsPadding: cellsPadding, gridType: .regularPreviewCell, items: items)
+                        let attributes = instagramFlowLayout.cachedLayoutAttributes
+                        
+                        let cellWidth = (UIScreen.main.bounds.width - 2 * hPadding) / 3
+                        
+                        let firstCellAttributes = attributes[0]
+                        let secondCellAttributes = attributes[1]
+                        let thirdCellAttributes = attributes[2]
+                        
+                        var rowCount: Int = 0
+                        
+                        expect(firstCellAttributes.frame).to(beCloseTo(CGRect(x: 0, y: 0, width: cellWidth, height: cellWidth)))
+                        expect(secondCellAttributes.frame).to(beCloseTo(CGRect(x: 0, y: cellWidth + vPadding, width: cellWidth, height: cellWidth)))
+                        expect(thirdCellAttributes.frame).to(beCloseTo(CGRect(x: cellWidth + hPadding, y: 0, width: cellWidth * 2 + vPadding, height: cellWidth * 2 + hPadding)))
+                        
+                        rowCount += 2
+                        
+                        for i in 3...8 {
+                            let attr = attributes[i]
+                            
+                            expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.origin.y).to(equal(CGFloat(rowCount) * (cellWidth + vPadding)))
+                            
+                            if attr.indexPath.row % 3 == 0 {
+                                expect(attr.frame.origin.x).to(equal(0))
+                            } else if attr.indexPath.row % 3 == 1 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth + hPadding))
+                            } else if attr.indexPath.row % 3 == 2 {
+                                expect(attr.frame.origin.x).to(equal(2 * (cellWidth + hPadding)))
+                                
+                                rowCount += 1
+                            }
+                        }
+                        
+                        let firstLeftCellAttributes = attributes[9]
+                        let secondLeftCellAttributes = attributes[10]
+                        let thirdLeftCellAttributes = attributes[11]
+                        
+                        expect(firstLeftCellAttributes.frame).to(beCloseTo(CGRect(x: 0, y: CGFloat(rowCount) * (cellWidth + vPadding), width: cellWidth * 2 + hPadding, height: cellWidth * 2 + vPadding)))
+                        expect(secondLeftCellAttributes.frame).to(beCloseTo(CGRect(x: 2 * (cellWidth + hPadding), y: CGFloat(rowCount) * (cellWidth + vPadding), width: cellWidth, height: cellWidth)))
+                        expect(thirdLeftCellAttributes.frame).to(beCloseTo(CGRect(x: 2 * (cellWidth + hPadding), y: CGFloat(rowCount + 1) * (cellWidth + vPadding), width: cellWidth, height: cellWidth)))
+                        
+                        rowCount += 2
+                        
+                        for i in 12...17 {
+                            let attr = attributes[i]
+                            
+                            expect(attr.frame.size.width).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.size.height).to(beLessThanOrEqualTo(cellWidth))
+                            expect(attr.frame.origin.y).to(beCloseTo(CGFloat(rowCount) * (cellWidth + hPadding)))
+                            
+                            if attr.indexPath.row % 3 == 0 {
+                                expect(attr.frame.origin.x).to(equal(0))
+                            } else if attr.indexPath.row % 3 == 1 {
+                                expect(attr.frame.origin.x).to(equal(cellWidth + hPadding))
+                            } else if attr.indexPath.row % 3 == 2 {
+                                expect(attr.frame.origin.x).to(equal(2 * (cellWidth + hPadding)))
+                                
+                                rowCount += 1
+                            }
+                        }
+                    }
+                }
             }
         }
     }
