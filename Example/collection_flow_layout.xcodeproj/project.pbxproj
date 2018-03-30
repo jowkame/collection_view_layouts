@@ -23,24 +23,24 @@
 		8C3AABAA20455EE5000E967B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AABA020455EE5000E967B /* Color.swift */; };
 		8C5C498A206A556F008E9AD3 /* InstagramStyleLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C4988206A5537008E9AD3 /* InstagramStyleLayoutSpec.swift */; };
 		8C5C498D206A5805008E9AD3 /* InstagramStyleBaseDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C498B206A57F9008E9AD3 /* InstagramStyleBaseDelegateMock.swift */; };
-		8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */; };
-		8C99515E205FF5340090E8E0 /* 500pxStyleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */; };
-		8C995161206005240090E8E0 /* 500pxFiveElementsDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */; };
-		8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */; };
 		8CB197922046D370005D8021 /* ContentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9620455EE5000E967B /* ContentDataSource.swift */; };
 		8CB197932046D383005D8021 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9820455EE5000E967B /* ContentCell.swift */; };
 		8CB197942046D394005D8021 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AABA020455EE5000E967B /* Color.swift */; };
 		8CB197952046D397005D8021 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9F20455EE5000E967B /* Font.swift */; };
-		8CB197992046EDB5005D8021 /* TagsFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */; };
 		8CB1979A2046EE42005D8021 /* CellSizeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AAB9720455EE5000E967B /* CellSizeProvider.swift */; };
 		8CB1979C2046EE9B005D8021 /* FlowLayoutTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */; };
 		8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */; };
-		8CB197A12047000E005D8021 /* PinterestFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1979F20470002005D8021 /* PinterestFlowDelegate.swift */; };
-		8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */; };
-		8CD685352056BBAB000ECEF5 /* PinterestFourElementsDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD685332056B9E4000ECEF5 /* PinterestFourElementsDelegateMock.swift */; };
+		8CD68D69206E46CD00C5EE78 /* TagsFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D5D206E46CD00C5EE78 /* TagsFlowDelegate.swift */; };
+		8CD68D6A206E46CD00C5EE78 /* TagsStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D5E206E46CD00C5EE78 /* TagsStyleFlowLayoutSpec.swift */; };
+		8CD68D6B206E46CD00C5EE78 /* 500pxFiveElementsDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D60206E46CD00C5EE78 /* 500pxFiveElementsDelegateMock.swift */; };
+		8CD68D6C206E46CD00C5EE78 /* 500pxLastPortraitDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D61206E46CD00C5EE78 /* 500pxLastPortraitDelegateMock.swift */; };
+		8CD68D6D206E46CD00C5EE78 /* 500pxStyleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D62206E46CD00C5EE78 /* 500pxStyleDelegateMock.swift */; };
+		8CD68D6E206E46CD00C5EE78 /* 500pxStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D63206E46CD00C5EE78 /* 500pxStyleFlowLayoutSpec.swift */; };
+		8CD68D6F206E46CD00C5EE78 /* 500pxCentralPortraitDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D64206E46CD00C5EE78 /* 500pxCentralPortraitDelegateMock.swift */; };
+		8CD68D70206E46CD00C5EE78 /* PinterestStyleFlowLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D66206E46CD00C5EE78 /* PinterestStyleFlowLayoutSpec.swift */; };
+		8CD68D71206E46CD00C5EE78 /* PinterestFourElementsDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D67206E46CD00C5EE78 /* PinterestFourElementsDelegateMock.swift */; };
+		8CD68D72206E46CD00C5EE78 /* PinterestFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD68D68206E46CD00C5EE78 /* PinterestFlowDelegate.swift */; };
 		8CF3337F20612E1800E3908D /* MatcherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3337D20612DC500E3908D /* MatcherExtension.swift */; };
-		8CF3338220614AB500E3908D /* 500pxCentralPortraitDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3338020614A3200E3908D /* 500pxCentralPortraitDelegateMock.swift */; };
-		8CF3338520614D1300E3908D /* 500pxLastPortraitDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3338320614CF700E3908D /* 500pxLastPortraitDelegateMock.swift */; };
 		AB8DA153A878015AAD84C918 /* Pods_collection_flow_layout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F9665BE8BD302558DB0B03 /* Pods_collection_flow_layout_Example.framework */; };
 		E9200117C13CD96C7B36E056 /* Pods_collection_flow_layout_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389EF9839DBA24CDB9DBD070 /* Pods_collection_flow_layout_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -82,18 +82,18 @@
 		8C3AABA020455EE5000E967B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C5C4988206A5537008E9AD3 /* InstagramStyleLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramStyleLayoutSpec.swift; sourceTree = "<group>"; };
 		8C5C498B206A57F9008E9AD3 /* InstagramStyleBaseDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramStyleBaseDelegateMock.swift; sourceTree = "<group>"; };
-		8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
-		8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxStyleDelegateMock.swift; sourceTree = "<group>"; };
-		8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxFiveElementsDelegateMock.swift; sourceTree = "<group>"; };
-		8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
-		8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFlowDelegate.swift; sourceTree = "<group>"; };
 		8CB1979B2046EE9B005D8021 /* FlowLayoutTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutTypes.swift; sourceTree = "<group>"; };
-		8CB1979F20470002005D8021 /* PinterestFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestFlowDelegate.swift; sourceTree = "<group>"; };
-		8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
-		8CD685332056B9E4000ECEF5 /* PinterestFourElementsDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestFourElementsDelegateMock.swift; sourceTree = "<group>"; };
+		8CD68D5D206E46CD00C5EE78 /* TagsFlowDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsFlowDelegate.swift; sourceTree = "<group>"; };
+		8CD68D5E206E46CD00C5EE78 /* TagsStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
+		8CD68D60206E46CD00C5EE78 /* 500pxFiveElementsDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 500pxFiveElementsDelegateMock.swift; sourceTree = "<group>"; };
+		8CD68D61206E46CD00C5EE78 /* 500pxLastPortraitDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 500pxLastPortraitDelegateMock.swift; sourceTree = "<group>"; };
+		8CD68D62206E46CD00C5EE78 /* 500pxStyleDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 500pxStyleDelegateMock.swift; sourceTree = "<group>"; };
+		8CD68D63206E46CD00C5EE78 /* 500pxStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 500pxStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
+		8CD68D64206E46CD00C5EE78 /* 500pxCentralPortraitDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 500pxCentralPortraitDelegateMock.swift; sourceTree = "<group>"; };
+		8CD68D66206E46CD00C5EE78 /* PinterestStyleFlowLayoutSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestStyleFlowLayoutSpec.swift; sourceTree = "<group>"; };
+		8CD68D67206E46CD00C5EE78 /* PinterestFourElementsDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestFourElementsDelegateMock.swift; sourceTree = "<group>"; };
+		8CD68D68206E46CD00C5EE78 /* PinterestFlowDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestFlowDelegate.swift; sourceTree = "<group>"; };
 		8CF3337D20612DC500E3908D /* MatcherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatcherExtension.swift; sourceTree = "<group>"; };
-		8CF3338020614A3200E3908D /* 500pxCentralPortraitDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxCentralPortraitDelegateMock.swift; sourceTree = "<group>"; };
-		8CF3338320614CF700E3908D /* 500pxLastPortraitDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 500pxLastPortraitDelegateMock.swift; sourceTree = "<group>"; };
 		AEDCB129F10BCC1EAC0881F2 /* Pods-collection_flow_layout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection_flow_layout_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-collection_flow_layout_Tests/Pods-collection_flow_layout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CDE196837C4DBF60F73175E7 /* collection_flow_layout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = collection_flow_layout.podspec; path = ../collection_flow_layout.podspec; sourceTree = "<group>"; };
 		D3F9665BE8BD302558DB0B03 /* Pods_collection_flow_layout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection_flow_layout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,11 +187,11 @@
 			isa = PBXGroup;
 			children = (
 				8CF3337D20612DC500E3908D /* MatcherExtension.swift */,
-				8C5C4987206A551F008E9AD3 /* InstagramLayout */,
-				8C7709B9205BC3C90080A8D4 /* 500px */,
-				8CB1979E2046FFE7005D8021 /* PinterestLayout */,
-				8CB197982046EC94005D8021 /* TagsLayout */,
 				607FACEB1AFB9204008FA782 /* ContentDynamicLayoutSpec.swift */,
+				8CD68D5F206E46CD00C5EE78 /* 500px */,
+				8CD68D65206E46CD00C5EE78 /* PinterestLayout */,
+				8CD68D5C206E46CD00C5EE78 /* TagsLayout */,
+				8C5C4987206A551F008E9AD3 /* InstagramLayout */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -264,35 +264,35 @@
 			path = InstagramLayout;
 			sourceTree = "<group>";
 		};
-		8C7709B9205BC3C90080A8D4 /* 500px */ = {
+		8CD68D5C206E46CD00C5EE78 /* TagsLayout */ = {
 			isa = PBXGroup;
 			children = (
-				8C995159205FA4610090E8E0 /* 500pxStyleFlowLayoutSpec.swift */,
-				8C99515C205FE6220090E8E0 /* 500pxStyleDelegateMock.swift */,
-				8C99515F206002C50090E8E0 /* 500pxFiveElementsDelegateMock.swift */,
-				8CF3338020614A3200E3908D /* 500pxCentralPortraitDelegateMock.swift */,
-				8CF3338320614CF700E3908D /* 500pxLastPortraitDelegateMock.swift */,
+				8CD68D5D206E46CD00C5EE78 /* TagsFlowDelegate.swift */,
+				8CD68D5E206E46CD00C5EE78 /* TagsStyleFlowLayoutSpec.swift */,
 			);
-			name = 500px;
+			path = TagsLayout;
 			sourceTree = "<group>";
 		};
-		8CB197982046EC94005D8021 /* TagsLayout */ = {
+		8CD68D5F206E46CD00C5EE78 /* 500px */ = {
 			isa = PBXGroup;
 			children = (
-				8CB197962046EC8E005D8021 /* TagsFlowDelegate.swift */,
-				8CB1978F2046CF4F005D8021 /* TagsStyleFlowLayoutSpec.swift */,
+				8CD68D60206E46CD00C5EE78 /* 500pxFiveElementsDelegateMock.swift */,
+				8CD68D61206E46CD00C5EE78 /* 500pxLastPortraitDelegateMock.swift */,
+				8CD68D62206E46CD00C5EE78 /* 500pxStyleDelegateMock.swift */,
+				8CD68D63206E46CD00C5EE78 /* 500pxStyleFlowLayoutSpec.swift */,
+				8CD68D64206E46CD00C5EE78 /* 500pxCentralPortraitDelegateMock.swift */,
 			);
-			name = TagsLayout;
+			path = 500px;
 			sourceTree = "<group>";
 		};
-		8CB1979E2046FFE7005D8021 /* PinterestLayout */ = {
+		8CD68D65206E46CD00C5EE78 /* PinterestLayout */ = {
 			isa = PBXGroup;
 			children = (
-				8CB1979F20470002005D8021 /* PinterestFlowDelegate.swift */,
-				8CB197A22047003A005D8021 /* PinterestStyleFlowLayoutSpec.swift */,
-				8CD685332056B9E4000ECEF5 /* PinterestFourElementsDelegateMock.swift */,
+				8CD68D66206E46CD00C5EE78 /* PinterestStyleFlowLayoutSpec.swift */,
+				8CD68D67206E46CD00C5EE78 /* PinterestFourElementsDelegateMock.swift */,
+				8CD68D68206E46CD00C5EE78 /* PinterestFlowDelegate.swift */,
 			);
-			name = PinterestLayout;
+			path = PinterestLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,15 +515,25 @@
 			files = (
 				8C3AABA220455EE5000E967B /* ContentDataSource.swift in Sources */,
 				8C3AABA920455EE5000E967B /* Font.swift in Sources */,
+				8CD68D6C206E46CD00C5EE78 /* 500pxLastPortraitDelegateMock.swift in Sources */,
 				8C3AABA120455EE5000E967B /* ViewController.swift in Sources */,
 				8C3AABA620455EE5000E967B /* PickerDataSource.swift in Sources */,
+				8CD68D6F206E46CD00C5EE78 /* 500pxCentralPortraitDelegateMock.swift in Sources */,
+				8CD68D71206E46CD00C5EE78 /* PinterestFourElementsDelegateMock.swift in Sources */,
 				8CB1979C2046EE9B005D8021 /* FlowLayoutTypes.swift in Sources */,
+				8CD68D6E206E46CD00C5EE78 /* 500pxStyleFlowLayoutSpec.swift in Sources */,
 				8C3AABA520455EE5000E967B /* ContentProvider.swift in Sources */,
 				8C3AABAA20455EE5000E967B /* Color.swift in Sources */,
+				8CD68D6B206E46CD00C5EE78 /* 500pxFiveElementsDelegateMock.swift in Sources */,
+				8CD68D70206E46CD00C5EE78 /* PinterestStyleFlowLayoutSpec.swift in Sources */,
 				8C3AABA320455EE5000E967B /* CellSizeProvider.swift in Sources */,
+				8CD68D6D206E46CD00C5EE78 /* 500pxStyleDelegateMock.swift in Sources */,
+				8CD68D6A206E46CD00C5EE78 /* TagsStyleFlowLayoutSpec.swift in Sources */,
 				8C3AABA420455EE5000E967B /* ContentCell.swift in Sources */,
 				8C3AABA720455EE5000E967B /* PickerDelegate.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				8CD68D72206E46CD00C5EE78 /* PinterestFlowDelegate.swift in Sources */,
+				8CD68D69206E46CD00C5EE78 /* TagsFlowDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,24 +542,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CB197922046D370005D8021 /* ContentDataSource.swift in Sources */,
-				8CB197A12047000E005D8021 /* PinterestFlowDelegate.swift in Sources */,
 				8CF3337F20612E1800E3908D /* MatcherExtension.swift in Sources */,
-				8CB197912046CFB7005D8021 /* TagsStyleFlowLayoutSpec.swift in Sources */,
 				8CB197952046D397005D8021 /* Font.swift in Sources */,
-				8CF3338520614D1300E3908D /* 500pxLastPortraitDelegateMock.swift in Sources */,
-				8C99515E205FF5340090E8E0 /* 500pxStyleDelegateMock.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* ContentDynamicLayoutSpec.swift in Sources */,
 				8C5C498A206A556F008E9AD3 /* InstagramStyleLayoutSpec.swift in Sources */,
 				8CB1979D2046EEB2005D8021 /* FlowLayoutTypes.swift in Sources */,
 				8C5C498D206A5805008E9AD3 /* InstagramStyleBaseDelegateMock.swift in Sources */,
-				8CB197992046EDB5005D8021 /* TagsFlowDelegate.swift in Sources */,
 				8CB197942046D394005D8021 /* Color.swift in Sources */,
-				8C995161206005240090E8E0 /* 500pxFiveElementsDelegateMock.swift in Sources */,
-				8C99515B205FA4850090E8E0 /* 500pxStyleFlowLayoutSpec.swift in Sources */,
-				8CB197A420470058005D8021 /* PinterestStyleFlowLayoutSpec.swift in Sources */,
 				8CB197932046D383005D8021 /* ContentCell.swift in Sources */,
-				8CF3338220614AB500E3908D /* 500pxCentralPortraitDelegateMock.swift in Sources */,
-				8CD685352056BBAB000ECEF5 /* PinterestFourElementsDelegateMock.swift in Sources */,
 				8CB1979A2046EE42005D8021 /* CellSizeProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
