@@ -10,4 +10,5 @@ enum FlowLayoutType: Int {
     case tags
     case pinterest
     case px500
+    case instagram
 }
